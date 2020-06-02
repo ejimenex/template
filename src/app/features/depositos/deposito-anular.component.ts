@@ -42,7 +42,6 @@ export class DepositoAnulacionComponent {
             body: data
         };
 
-
         this.apiService.delete(endpoint.transaccionUrl + this.deposito.id, request).subscribe((response) => {
             this.alertService.success("El deposito se anulo correctamente.");
             this.notifyParent.emit(response);
