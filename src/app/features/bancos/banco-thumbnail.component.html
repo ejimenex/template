@@ -1,0 +1,39 @@
+<th scope="row">
+    {{banco.id}}
+</th>
+<td>
+    {{banco.fecha | date:"dd-MMM-yyyy"}}
+</td>
+<td>
+    {{banco.bancoNombre}}
+</td>
+<td>
+    {{banco.monedaNombre}}
+</td>
+<td>
+    {{banco.cantidadActualizaciones}}
+</td>
+<td>
+    {{banco.ultimaActualizacion | date:"dd/MMM/yyyy hh:mm a"}}
+</td>
+<td>
+    {{banco.cantidad}}
+</td>
+<td class="text-right">
+    {{banco.monto | currency}}
+</td>
+<td>
+    <div class="dropdown">
+        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Acciones
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item m--font-primary" href="#" (click)="verDetalles()">
+                <i class="fa fa-eye" aria-hidden="true"></i> Ver Detalles
+            </a>
+        </div>
+
+    </div>
+
+</td>

@@ -1,0 +1,6 @@
+<div class="text-danger">
+    <!-- <div *ngIf="input && input.invalid && (input.dirty || input.touched)"> -->
+    <div *ngIf="errors.length> 0">
+        <div *ngFor="let error of errors">{{error}}</div>
+    </div>
+</div>

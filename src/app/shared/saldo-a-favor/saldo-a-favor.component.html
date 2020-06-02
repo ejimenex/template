@@ -1,0 +1,28 @@
+<div class="form-group m-form__group row">
+    <label for="example-text-input" class="col-1 col-form-label">
+        Saldo Pesos:
+    </label>
+    <div class="col-5">
+        <div class="m-input-icon m-input-icon--right">
+            <input type="text" name="filtro" class="form-control m-input" placeholder="Filtro" readonly [value]="saldoDop| currency">
+            <span class="m-input-icon__icon m-input-icon__icon--right">
+                <span>
+                    <i class="la la-money"></i>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <label for="example-text-input" class="col-1 col-form-label">
+        Saldo Dolares:
+    </label>
+    <div class="col-5">
+        <div class="m-input-icon m-input-icon--right">
+            <input type="text" name="filtro" class="form-control m-input" readonly [value]="saldoUsd | currency">
+            <span class="m-input-icon__icon m-input-icon__icon--right">
+                <span>
+                    <i class="la la-money"></i>
+                </span>
+            </span>
+        </div>
+    </div>

@@ -1,0 +1,57 @@
+<div class="modal-header">
+    <h4 class="modal-title">Ver Actualizaciones</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="m-section">
+        <div class="m-section__content">
+            <table class="table table-striped m-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Fecha Actualización</th>
+                        <th>Usuario</th>
+                        <th>Registros</th>
+                        <th>Monto</th>
+                        <th>Comentario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of depositos">
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.fechaCreacion | date:"dd/MMM/yyyy hh:mm a"}}</td>
+                        <td>{{item.creadoPor}}</td>
+                        <td>{{item.cantidad}}</td>
+                        <td class="text-right">
+                            {{item.monto | currency}}
+                        </td>
+                        <td>{{item.comentario}}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    Acciones
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item m--font-primary" *ngIf="item.documentoId" [attr.href]="archivoUrl+item.documentoId"
+                                        target="_blank">
+                                        <i class="fa fa-download"></i> Descargar
+                                    </a>
+                                    <a *ngIf="item.cantidad != 0" class="dropdown-item m--font-primary" href="#"
+                                        (click)="anular(item)">
+                                        <i class="fa fa-times" aria-hidden="true"></i> Anular
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+</div>

@@ -1,0 +1,41 @@
+<th scope="row">
+    {{chequeDevuelto.noRecibo}}
+    <span *ngIf="!chequeDevuelto.estado" [ngClass]="{'m-badge--danger':!chequeDevuelto.estado}" class="m-badge m-badge--wide">Anulado</span>
+</th>
+<td>
+    {{chequeDevuelto.chequeNo}}
+</td>
+<td>
+    {{chequeDevuelto.fechaDevolucion| date:"dd-MMM-yyyy"}}
+</td>
+<td>
+    {{chequeDevuelto.clienteNombre | uppercase}}
+</td>
+<td>
+    {{chequeDevuelto.monedaCodigo | uppercase}}
+</td>
+<td>
+    {{chequeDevuelto.bancoNombre | uppercase}}
+</td>
+<td class="text-right">
+    {{chequeDevuelto.monto | currency}}
+</td>
+<td class="text-right">
+    {{chequeDevuelto.montoPendiente | currency}}
+</td>
+<td>
+    <div class="dropdown">
+        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Acciones
+        </button>
+        <div class="dropdown-menu">
+            <div>
+                <a class="dropdown-item m--font-primary" (click)="modificar()">
+                    <i class="fa fa-edit" aria-hidden="true"></i> Modificar
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</td>

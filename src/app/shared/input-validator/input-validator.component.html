@@ -1,0 +1,18 @@
+<ng-content></ng-content>
+<div #validations>
+  <div class="text-danger">
+    <div *ngIf="input && input.invalid">
+      <div *ngIf="input.errors.required">
+        Este campo es requerido
+      </div>
+      <div *ngIf="input.errors.minlength">
+        Este campo debe tener al menos caracteres
+      </div>
+      <div *ngIf="input.errors.maxlength">
+        Este campo debe tener como máximo caracteres
+      </div>
+    </div>
+
+    <div *ngFor="let error of errors">{{error}}</div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="modal-header">
+    <h4 class="modal-title">Registrar Cheque Devuelto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form id="form" novalidate (onSubmit)="guardar()">
+        <div class="form-group m-form__group">
+            <label for="banco">
+                Banco:
+            </label>
+            <select class="form-control  m-input" name="banco" [(ngModel)]="chequeDevuelto.bancoId" required app-input>
+                <option *ngFor="let moneda of bancos" [value]="moneda.id">
+                    {{moneda.nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group m-form__group">
+            <label for="fechaDevolucion">
+                Fecha Devolución:
+            </label>
+            <input class="form-control  m-input" name="fechaDevolucion" [(ngModel)]="chequeDevuelto.fechaDevolucion" type="date" required
+            />
+        </div>
+        <div class="form-group m-form__group">
+            <label for="cliente">
+                Cliente:
+            </label>
+            <input class="form-control  m-input" name="cliente" [ngbTypeahead]="searchCliente" [resultFormatter]="formatter" [inputFormatter]="formatter"
+                (selectItem)="selectedCliente($event)" required/>
+
+        </div>
+        <div class="form-group m-form__group">
+            <label for="chequeNo">
+                Cheque No.:
+            </label>
+            <input class="form-control  m-input" name="chequeNo" [(ngModel)]="chequeDevuelto.chequeNo" required/>
+
+        </div>
+        <div class="form-group m-form__group">
+            <label for="fechaCheque">
+                Fecha Cheque:
+            </label>
+            <input class="form-control  m-input" name="fechaCheque" [(ngModel)]="chequeDevuelto.fechaCheque" type="date" required/>
+        </div>
+        <div class="form-group m-form__group">
+            <label for="comentario">
+                Moneda:
+            </label>
+            <select class="form-control  m-input" name="moneda" [(ngModel)]="chequeDevuelto.monedaId" required app-input>
+                <option *ngFor="let moneda of monedas" [value]="moneda.id">
+                    {{moneda.nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group m-form__group">
+            <label for="montoCheque">
+                Monto Cheque:
+            </label>
+            <input class="form-control  m-input" name="montoCheque" [(ngModel)]="chequeDevuelto.monto" type="number" min="1" required
+            />
+
+        </div>
+        <div class="form-group m-form__group">
+            <label for="comentario">
+                Motivo Devolución:
+            </label>
+            <select class="form-control  m-input" name="moneda" [(ngModel)]="chequeDevuelto.motivoDevolucionId" required app-input>
+                <option *ngFor="let moneda of motivos" [value]="moneda.id">
+                    {{moneda.descripcion}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group m-form__group">
+            <label for="comentario">
+                Comentario:
+            </label>
+            <textarea class="form-control  m-input" name="comentario" [(ngModel)]="chequeDevuelto.comentario" rows="3" required app-input>
+            </textarea>
+        </div>
+    </form>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+    <button type="submit" class="btn btn-primary" form="form">
+        Guardar
+    </button>
+</div>

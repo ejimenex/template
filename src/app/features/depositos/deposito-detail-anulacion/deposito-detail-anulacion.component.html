@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h4 class="modal-title">Anulación - Depósito # {{model?.depositoId}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group m-form__group">
+        <label for="usuario">
+            Usuario:
+        </label>
+        <input type="text" class="form-control  m-input" name="usuario" [value]="model?.creadoPor" disabled />
+    </div>
+    <div class="form-group m-form__group">
+        <label for="fecha">
+            Fecha Anulación:
+        </label>
+        <input type="text" class="form-control  m-input" name="fecha" [value]="model?.fechaCreacion | date: 'yyyy-MMM-dd'"
+            disabled />
+    </div>
+    <div class="form-group m-form__group">
+        <label for="motivo">
+            Motivo de Anulación:
+        </label>
+        <select class="form-control  m-input" name="motivo" [value]="model?.anularArchivoId" disabled>
+            <option *ngFor="let item of motivos">
+                {{item.nombre}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group m-form__group">
+        <label for="comentario">
+            Comentario:
+        </label>
+        <textarea class="form-control m-input" id="comentario" rows="3" [value]="model?.comentario" disabled></textarea>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+</div>

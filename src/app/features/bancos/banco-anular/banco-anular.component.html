@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title">Anular - Banco # {{banco.id}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form id="formAnulacion" novalidate (onSubmit)="guardarMotivoAnulacion()">
+        <div class="form-group m-form__group">
+            <label for="motivo">
+                Motivo de Anulación:
+            </label>
+            <select class="form-control  m-input" name="motivo" [(ngModel)]="motivo" required app-input>
+                <option *ngFor="let item of motivos" [ngValue]="motivo">
+                    {{item.nombre}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group m-form__group">
+            <label for="comentario">
+                Comentario:
+            </label>
+            <textarea name="comentario" class="form-control m-input" id="comentario" rows="3" [(ngModel)]="comentario"
+                required app-input></textarea>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+    <button type="submit" class="btn btn-primary" form="formAnulacion">
+        Guardar
+    </button>
+</div>

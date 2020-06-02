@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title">Anular - Depósito # {{deposito.id}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group m-form__group">
+        <label for="motivo">
+            Motivo de Anulación:
+        </label>
+        <select class="form-control  m-input" name="motivo" [(ngModel)]="motivo">
+            <option *ngFor="let item of motivos" [ngValue]="motivo">
+                {{item.nombre}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group m-form__group">
+        <label for="comentario">
+            Comentario:
+        </label>
+        <textarea class="form-control m-input" id="comentario" rows="3" [(ngModel)]="comentario" [required]="motivo.requiereComentario"></textarea>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+    <button type="button" (click)="guardarMotivoAnulacion()" class="btn btn-primary">
+        Guardar
+    </button>
+</div>

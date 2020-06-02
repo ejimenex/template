@@ -1,0 +1,76 @@
+<div class="modal-header">
+    <h4 class="modal-title">Modificar Cheque Devuelto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form id="form" novalidate (onSubmit)="modificar()">
+        <div class="form-group m-form__group">
+            <label for="banco">
+                Banco:
+            </label>
+            <input class="form-control  m-input" name="banco" [value]="chequeDevuelto.bancoNombre" disabled/>
+        </div>
+        <div class="form-group m-form__group">
+            <label for="fechaDevolucion">
+                Fecha Devolución:
+            </label>
+            <input class="form-control  m-input" name="fechaDevolucion" [value]="chequeDevuelto.fechaDevolucion |  date:'dd-MMM-yyyy'"
+                disabled />
+        </div>
+        <div class="form-group m-form__group">
+            <label for="cliente">
+                Cliente:
+            </label>
+            <input class="form-control  m-input" name="banco" [value]="chequeDevuelto.clienteNombre" disabled/>
+
+        </div>
+        <div class="form-group m-form__group">
+            <label for="chequeNo">
+                Cheque No.:
+            </label>
+            <input class="form-control  m-input" name="chequeNo" [value]="chequeDevuelto.chequeNo" disabled/>
+
+        </div>
+        <div class="form-group m-form__group">
+            <label for="fechaCheque">
+                Fecha Cheque:
+            </label>
+            <input class="form-control  m-input" name="fechaCheque" [value]="chequeDevuelto.fechaCheque | date:'dd-MMM-yyyy'" disabled/>
+        </div>
+        <div class="form-group m-form__group">
+            <label for="comentario">
+                Moneda:
+            </label>
+            <input class="form-control  m-input" name="banco" [value]="chequeDevuelto.monedaCodigo" disabled/>
+        </div>
+        <div class="form-group m-form__group">
+            <label for="montoCheque">
+                Monto Cheque:
+            </label>
+            <input class="form-control  m-input" name="montoCheque" [value]="chequeDevuelto.monto | currency" disabled />
+
+        </div>
+        <div class="form-group m-form__group">
+            <label for="comentario">
+                Motivo Devolución:
+            </label>
+            <input class="form-control  m-input" name="moneda" [value]="chequeDevuelto.motivoDevolucionDescripcion" disabled/>
+        </div>
+        <div class="form-group m-form__group">
+            <label for="comentario">
+                Comentario:
+            </label>
+            <textarea class="form-control  m-input" name="comentario" [(ngModel)]="chequeDevuelto.comentario" rows="3" required app-input>
+            </textarea>
+        </div>
+    </form>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+    <button type="submit" class="btn btn-primary" form="form">
+        Modificar
+    </button>
+</div>

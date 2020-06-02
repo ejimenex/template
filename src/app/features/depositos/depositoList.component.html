@@ -1,0 +1,124 @@
+<div class="m-subheader">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                Depósitos
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a href="#" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END: Subheader -->
+<div class="m-content">
+    <div>
+        <!--Begin::Section-->
+        <div class="row">
+            <div class="col-xl-12">
+                <app-deposito-filter (enviarFiltro)="filterChange($event)"></app-deposito-filter>
+                <div class="m-portlet m-portlet--tab" m-portlet="true">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Ingresos Bancos
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="m-portlet__head-tools">
+                            <ul class="m-portlet__nav">
+                                <li class="m-portlet__nav-item">
+                                    <a href="#" m-portlet-tool="reload" (click)="getAll()"
+                                        class="m-portlet__nav-link m-portlet__nav-link--icon">
+                                        <i class="la la-refresh"></i>
+                                    </a>
+                                </li>
+                                <li class="m-portlet__nav-item">
+                                    <a href="#" m-portlet-tool="toggle"
+                                        class="m-portlet__nav-link m-portlet__nav-link--icon">
+                                        <i class="la la-angle-down"></i>
+                                    </a>
+                                </li>
+                                <li class="m-portlet__nav-item">
+                                    <a href="#" m-portlet-tool="fullscreen"
+                                        class="m-portlet__nav-link m-portlet__nav-link--icon">
+                                        <i class="la la-expand"></i>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="m-portlet__body">
+                        <!--begin::Section-->
+                        <div class="m-section">
+                            <div class="m-section__content">
+                                <table class="table table-striped m-table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                #
+                                            </th>
+                                            <th>
+                                                Cliente
+                                            </th>
+                                            <th>
+                                                Fecha
+                                            </th>
+                                            <th>
+                                                Descripción
+                                            </th>
+                                            <th>
+                                                Banco
+                                            </th>
+                                            <th>
+                                                Recibos
+                                            </th>
+                                            <th>
+                                                Monto
+                                            </th>
+                                            <th>
+                                                Aplicado
+                                            </th>
+                                            <th>
+                                                Pendiente
+                                            </th>
+                                            <th>
+                                                Comentario
+                                            </th>
+                                            <th>
+                                                Ultimo Cambio
+                                            </th>
+                                            <th>
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let item of depositos">
+                                            <tr app-deposito-thumbnail [deposito]="item" notifyParent="getAll()"></tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--end::Section-->
+                        <ngb-pagination (pageChange)=" pageChange($event)" [collectionSize]="collectionSize"
+                            [maxSize]="10" [pageSize]="pageSize" [(page)]="page" aria-label="Default pagination">
+                        </ngb-pagination>
+                    </div>
+                    <!--end::Form-->
+                </div>
+            </div>
+
+            <!--End::Section-->
+        </div>
+    </div>
+</div>

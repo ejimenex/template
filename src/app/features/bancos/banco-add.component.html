@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h4 class="modal-title">Subir Archivo de Banco</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form enctype="multipart/form-data">
+
+        <div class="form-group m-form__group">
+            <label for="banco">
+                Banco:
+            </label>
+            <select class="form-control  m-input" name="banco" [(ngModel)]="bancoId" required>
+                <option *ngFor="let moneda of bancos" [value]="moneda.id">
+                    {{moneda.nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group m-form__group">
+            <label for="comentario">
+                Moneda:
+            </label>
+            <select class="form-control  m-input" name="moneda" [(ngModel)]="monedaId">
+                <option *ngFor="let moneda of monedas" [value]="moneda.id">
+                    {{moneda.nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group m-form__group">
+            <label for="comentario">
+                Archivo:
+            </label>
+            <input class="form-control m-input" id="file" type="file" name="documents" [(ngModel)]="file" rows="3"
+                (change)="onFileChange($event)" />
+        </div>
+        <div class="form-group m-form__group">
+            <label for="comentario">
+                Comentario:
+            </label>
+            <textarea class="form-control  m-input" name="comentario" [(ngModel)]="comentario" rows="3">
+            </textarea>
+        </div>
+    </form>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+    <button type="button" class="btn btn-primary" (click)="enviarArchivo()" [disabled]="inProgress">
+        Guardar
+    </button>
+</div>
