@@ -36,7 +36,6 @@ export class DepositoAnulacionComponent {
             anularArchivoId: this.motivo.id,
             comentario: this.comentario,
         };
-
         let request: any = {
             headers: this.jwt(),
             body: data
