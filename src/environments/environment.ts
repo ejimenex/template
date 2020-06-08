@@ -12,59 +12,13 @@ export const environment: any = {
 export const config: any = {
     apiUrl: "http://10.228.30.87:8001/api/", //"http://localhost:5000/api/",//"http://10.228.30.87:8001/api/", //"http://192.168.50.5:6001/api/",//  "http://192.168.50.5:6002/api/",
     mantenimientoUrl: "http://10.228.30.106:5600/api/",
+    authentication:"http://10.228.30.87:8001/api/",
     serverUrl: "http://10.228.30.87:8025/",
     reportUrl: "http://mardom-qa-srv01/",
     reportServerUrl: "http://mardom-sql-srv01/ReportServer",
     diferenciaMinima: 100,
-    modalConfig: <NgbModalOptions>{ size: "lg", backdrop: "static", keyboard: false },
-    retenciones: [
-        { value: 0.00, label: "N/A", group: "N/A" },
-        { value: 0.05, label: "5% ISR", group: "ISR" },
-        { value: 0.02, label: "2% ITBIS", group: "ITBIS" },
-        { value: 0.3, label: "30% ITBIS", group: "ITBIS" },
-        { value: 1.00, label: "100% ITBIS", group: "ITBIS" }
-    ],
-    dias: 30,
-    conceptos: ["Corrección", "Descuento", "Anulación"],
-    motivos: [
-        { id: 4, nombre: "Faltantes" },
-        { id: 5, nombre: "Cargos Bancarios" },
-        { id: 6, nombre: "Avances P. Anteriores" },
-        { id: 12, nombre: "Cuentas Incobrables" },
-        { id: 10, nombre: "Descargo Armadores" },
-        { id: 11, nombre: "Cuenta Empleado" }
-    ],
-    reportes: [
-        {
-            Label: "Estado de cuenta",
-            Url: "Global Mardom/ReportesFacturacion/Desarrollo/FacturasPendientesPorCliente",
-            requiereCliente: true
-        },
-        {
-            Label: "Saldo por antiguedad",
-            Url: "Global Mardom/ReportesFacturacion/Desarrollo/FacturasPendientesPorCliente_SaldoPorAntiguedad",
-            requiereCliente: false
-        },
-        {
-            Label: "Saldo por antiguedad (detallado por facturas)",
-            Url: "Global Mardom/ReportesFacturacion/Desarrollo/FacturasPendientesPorCliente_SaldoPorAntiguedad_Detallado",
-            requiereCliente: true
-        },
-        {
-            Label: "Movimiento Cliente",
-            Url: "Global Mardom/ReportesFacturacion/Desarrollo/Reporte Movimiento",
-            requiereCliente: true
-        }
-    ],
-    mantenimientoGeneralUrl: "http://192.168.50.5:8084",
-    firmaUsuario: `<br/><br/><img src='logo' width='140' height='68'  />  
-                          <p style='font: bold 15px arial; color:#091b38'>
-                            <usuario></usuario> | Marítima Dominicana, S.A.S.
-                          </p>
-                          <p>Main Switchboard(809) 539-6000 <br />Fax(809) 539-7338 <br/><a href='http://www.mardom.com' target='_blank'>http://www.mardom.com </a>
-                          <br/>Our group email address is 
-                          <br /><a href='&lt;facturacion@mardom.com&gt;' target='_blank' class=''>cobros@mardom.com</a></p>`
-};
+    modalConfig: <NgbModalOptions>{ size: "lg", backdrop: "static", keyboard: false }}
+   
 
 export const endpoint: any = {
     transaccionUrl: config.apiUrl + "facturacion/Deposito/Transacciones/",
@@ -73,7 +27,7 @@ export const endpoint: any = {
     motivoAnulacion: config.apiUrl + "facturacion/AnularArchivo",
     monedaUrl: config.apiUrl + "Facturacion/Monedas",
     bancoUrl: config.apiUrl + "Facturacion/Bancos",
-    authenticationUrl: config.apiUrl + "authentication/token",
+    authenticationUrl: config.authentication + "authentication/token",
     usuariosUrl: config.apiUrl + "sistemas/empleados",
     recibosUrl: config.apiUrl + "facturacion/ClientePagos",
     empresasUrl: config.apiUrl + "facturacion/empresas",

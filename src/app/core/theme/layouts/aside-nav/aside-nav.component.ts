@@ -24,7 +24,6 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
 
     }
     ngAfterViewInit() {
-
         mLayout.initAside();
 
     }
