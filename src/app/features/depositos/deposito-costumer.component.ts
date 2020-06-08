@@ -10,6 +10,7 @@ import { AlertService } from "../../core/auth/_services/alert.service";
 
 declare var swal: any;
 
+
 @Component({
     selector: 'app-deposito-costumer',
     templateUrl: './deposito-costumer.component.html'
