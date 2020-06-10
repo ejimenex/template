@@ -26,7 +26,6 @@ const routes: Routes = [
                 path: "archivosBanco",
                 loadChildren: ".\/features\/bancos\/banco.module#BancoModule",
             },
-            
             {
                 path: "",
                 redirectTo: "index",

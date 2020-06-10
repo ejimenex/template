@@ -10,7 +10,8 @@ export const environment: any = {
 };
 
 export const config: any = {
-    apiUrl: "http://10.228.30.87:8001/api/", //"http://localhost:5000/api/",//"http://10.228.30.87:8001/api/", //"http://192.168.50.5:6001/api/",//  "http://192.168.50.5:6002/api/",
+    apiUrl: "http://10.228.30.87:8001/api/",//"http://localhost:5000/api/",//"http://10.228.30.87:8001/api/", //"http://192.168.50.5:6001/api/",//  "http://192.168.50.5:6002/api/",
+    apiArchivo: "http://localhost:5000/api/",
     mantenimientoUrl: "http://10.228.30.106:5600/api/",
     authentication:"http://10.228.30.87:8001/api/",
     serverUrl: "http://10.228.30.87:8025/",
@@ -21,8 +22,10 @@ export const config: any = {
    
 
 export const endpoint: any = {
+    
+
     transaccionUrl: config.apiUrl + "facturacion/Deposito/Transacciones/",
-    depositsUrl: config.apiUrl + "facturacion/Deposito/",
+    depositsUrl: config.apiArchivo + "File",
     clienteUrl: config.apiUrl + "sistemas/clientes/",
     motivoAnulacion: config.apiUrl + "facturacion/AnularArchivo",
     monedaUrl: config.apiUrl + "Facturacion/Monedas",

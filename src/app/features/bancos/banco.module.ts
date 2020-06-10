@@ -14,6 +14,7 @@ import { AuthGuard } from "../../core/auth/_guards/auth.guard";
 import { SharedModule } from '../../shared/shared.module';
 import { BancoAnulacionComponent } from './banco-anular/banco-anular.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FileService} from '../../core/_services/file.service';
 
 
 const routes: Routes = [
@@ -32,15 +33,28 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule, RouterModule.forChild(routes), NgbModule, FormsModule, LayoutModule,
-        SharedModule, ReactiveFormsModule
+        CommonModule,
+         RouterModule.forChild(routes),
+          NgbModule, 
+          FormsModule, 
+          LayoutModule,
+        SharedModule,
+         ReactiveFormsModule
     ], exports: [
         RouterModule,
     ], declarations: [
-        BancoListComponent, BancoAddComponent, BancoThumbnailComponent, bancoFilterComponent, BancoDetailComponent, BancoAnulacionComponent
+        BancoListComponent, 
+        BancoAddComponent, 
+        BancoThumbnailComponent, 
+        bancoFilterComponent, 
+        BancoDetailComponent,
+        BancoAnulacionComponent
     ],
-    entryComponents: [BancoAddComponent, BancoDetailComponent, BancoAnulacionComponent],
-    //providers: [ApiService]
+    entryComponents: [
+        BancoAddComponent, 
+        BancoDetailComponent,
+         BancoAnulacionComponent],
+    providers: [FileService]
 })
 export class BancoModule {
 }

@@ -32,10 +32,10 @@ export class BancoThumbnailComponent implements OnInit {
     verDetalles() {
 
         let data = {};
-        this.apiService.orderBy(data, ["id"], true);
-        data["id"] = this.banco.archivoBancoIds.join(",");
+        this.apiService.orderBy(data, ["Id"], true);
+        data["Id"] = this.banco.archivoBancoIds.join(",");
 
-        this.apiService.addSelection(data, ["id", "fechaCreacion", "creadoPor", "cantidad", "monto", "comentario", "documentoId",
+        this.apiService.addSelection(data, ["Id", "createdDate", "createdBy", "quantity", "totalAmount", "commentary", "documentoId",
             "estatus"]);
 
 
