@@ -22,7 +22,7 @@
             <label for="banco">
                 RNC
             </label>  <span class="text-danger" *ngIf='!company.documentNumber'> * </span>
-            <input type="text" class="form-control  m-input" name="documentNumber" [(ngModel)]="company.documentNumber" />
+            <input type="text" class="form-control  m-input" maxlength="12" name="documentNumber" [(ngModel)]="company.documentNumber" />
         </div>
     </form>
 
