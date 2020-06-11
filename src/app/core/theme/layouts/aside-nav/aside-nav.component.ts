@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
-import { reports, config } from '../../../../../environments/environment';
 import {AlertService} from '../../../_services/alert.service';
 
 
@@ -13,11 +12,8 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
 
     reciboPagoFull: string;
     mantenimientoUrl: string;
-    reports: any = reports;
 
     constructor(private alertService:AlertService) {
-        this.reciboPagoFull = reports.reciboPagoFull;
-        this.mantenimientoUrl = config.mantenimientoGeneralUrl;
         
     }
     ngOnInit() {
