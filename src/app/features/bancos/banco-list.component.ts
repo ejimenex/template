@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import { endpoint, config } from "../../../environments/environment";
 import { Helpers } from '../../helpers';
-import { BancoAddComponent } from './banco-add.component';
+import { BankAddComponent } from './add/bank-add.component';
 
 
 @Component({
@@ -36,7 +36,7 @@ export class BancoListComponent implements OnInit {
 
     agregarBanco() {
 
-        var modal = this.modalService.open(BancoAddComponent, config.modalConfig);
+        var modal = this.modalService.open(BankAddComponent, config.modalConfig);
         modal.componentInstance.monedas = [];
 
         var data = {};

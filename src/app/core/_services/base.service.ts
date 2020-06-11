@@ -29,7 +29,7 @@ export class BaseService<TEntity, TKey> implements IService<TEntity, TKey> {
   }
 
   getById(id: TKey): Observable<TEntity> {
-    return this._httpClient.get<TEntity>(this.baseUrl + id);
+    return this._httpClient.get<TEntity>(this.baseUrl +'/'+ id);
   }
 
   post(entity: TEntity): Observable<Object> {
@@ -50,7 +50,7 @@ export class BaseService<TEntity, TKey> implements IService<TEntity, TKey> {
   }
 
   delete(id: TKey): Observable<Object> {
-    return this._httpClient.delete(this.baseUrl + id);
+    return this._httpClient.delete(this.baseUrl+'/'+ id);
   }
 
   search(propertyName: string, term: string, pageSize: number): Observable<Object> {

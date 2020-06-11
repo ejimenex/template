@@ -2,7 +2,6 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
-import { BancoAddComponent } from "./banco-add.component";
 import { BancoDetailComponent } from "./banco-detail.component";
 import { bancoFilterComponent } from "./banco-filter.component";
 import { BancoThumbnailComponent } from "./banco-thumbnail.component";
@@ -14,7 +13,10 @@ import { AuthGuard } from "../../core/auth/_guards/auth.guard";
 import { SharedModule } from '../../shared/shared.module';
 import { BancoAnulacionComponent } from './banco-anular/banco-anular.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { BankAddComponent } from './add/bank-add.component';
+import {BankService} from '../../core/_services/bank.service';
+import {CurrencyService} from '../../core/_services/currency.service';
+import {CompanyService} from '../../core/_services/company.service';
 
 const routes: Routes = [
     {
@@ -37,10 +39,10 @@ const routes: Routes = [
     ], exports: [
         RouterModule,
     ], declarations: [
-        BancoListComponent, BancoAddComponent, BancoThumbnailComponent, bancoFilterComponent, BancoDetailComponent, BancoAnulacionComponent
+        BancoListComponent, BankAddComponent, BancoThumbnailComponent, bancoFilterComponent, BancoDetailComponent, BancoAnulacionComponent
     ],
-    entryComponents: [BancoAddComponent, BancoDetailComponent, BancoAnulacionComponent],
-    //providers: [ApiService]
+    entryComponents: [ BancoDetailComponent, BancoAnulacionComponent,BankAddComponent],
+    providers: [BankService,CurrencyService,CompanyService]
 })
 export class BancoModule {
 }
