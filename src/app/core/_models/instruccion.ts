@@ -1,4 +1,4 @@
-import { Moneda } from "./moneda";
+
 import { Helpers } from '../../helpers';
 
 export class Instruccion {
@@ -20,7 +20,6 @@ export class Instruccion {
     total: number;
     montoPagado: number;
     montoPendiente: number = 0;
-    moneda?: Moneda;
     noDocumento: string;
     tasa: number;
     selected: boolean = false;
@@ -32,29 +31,7 @@ export class Instruccion {
     valorPorcentual: number = 0;
 
 
-
-    convertido(tasa: number, moneda: Moneda) {
-
-        if (moneda && this.moneda.codigo == moneda.codigo) {
-            this.tasa = 1;
-            return this.montoAPagar;
-        }
-        else if (moneda && moneda.codigo == "DOP") {
-            this.tasa = +tasa;
-            return tasa * this.montoAPagar;
-        }
-        else if (moneda && (moneda.codigo == "USD" || moneda.codigo == "EUR")) {
-            this.tasa = +tasa;
-            return Helpers.roundTo(this.montoAPagar / tasa, 2);
-        }
-        else {
-            return 0;
-        }
-
-
-    }
-
-    calcularRetencion() {
+calcularRetencion() {
 
         if (this.tipoRetencion) {
             if (this.tipoRetencion === 0.05) {

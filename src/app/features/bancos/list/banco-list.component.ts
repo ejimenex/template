@@ -1,14 +1,14 @@
-import { ApiService } from '../../core/_services/api.service';
+import { ApiService } from '../../../core/_services/api.service';
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
-import { endpoint, config } from "../../../environments/environment";
-import { Helpers } from '../../helpers';
-import { FileService} from '../../core/_services/file.service';
-import { file } from '../../core/_models/file.model';
-import { BancoAddComponent } from './banco-add.component';
-import { Filter } from '../../core/_models/filter';
-import { FilterService } from '../../core/_services/filter.service';
+import { endpoint, config } from "../../../../environments/environment";
+import { Helpers } from '../../../helpers';
+import { FileService} from '../../../core/_services/file.service';
+import { file } from '../../../core/_models/file.model';
+import { BankAddComponent } from '../add/bank-add.component';
+import { Filter } from '../../../core/_models/filter';
+import { FilterService } from '../../../core/_services/filter.service';
 import { NgForm } from '@angular/forms';
 
 
@@ -47,28 +47,17 @@ export class BancoListComponent implements OnInit {
         this.getAll();
     }
 
-  /*  agregarBanco() {
+    agregarBanco() {
 
-        var modal = this.modalService.open(BancoAddComponent, config.modalConfig);
+        var modal = this.modalService.open(BankAddComponent, config.modalConfig);
         modal.componentInstance.monedas = [];
 
         var data = {};
-
-        this.apiService.addFilter(data, "poseeCuentasContables", true);
-
-        this.apiService.get(endpoint.bancoUrl, data).subscribe(response => {
-            modal.componentInstance.bancos = response.data;
-        });
-
-        this.apiService.get(endpoint.monedaUrl, {}).subscribe(response => {
-            modal.componentInstance.monedas = response.data;
-        });
-
         modal.componentInstance.notifyParent.subscribe(result => {
             this.getAll();
         });
 
-    }*/
+    }
    
 
     getAll( ) {

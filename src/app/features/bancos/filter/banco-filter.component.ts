@@ -1,8 +1,11 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import * as moment from 'moment';
-import { ApiService } from '../../core/_services/api.service';
-import { Filter } from '../../core/_models/filter';
-import { FilterService } from '../../core/_services/filter.service';
+import { ApiService } from '../../../core/_services/api.service';
+import { Filter } from '../../../core/_models/filter';
+import { CurrencyService } from '../../../core/_services/currency.service';
+import { BankService } from '../../../core/_services/bank.service';
+import { Currency } from '../../../core/_models/currency';
+import { Bank } from '../../../core/_models/bank';
 
 @Component({
     selector: 'app-banco-filter',
@@ -18,10 +21,10 @@ export class bancoFilterComponent implements OnInit {
     currencyselect: any; 
     filter: Filter;
     seleccionado: any; 
+    currency:Currency[]
+    bank:Bank[]
 
-    monedas: any[] = [{ nombre: "TODAS", codigo: null }, { nombre: "DOMINICAN PESO", codigo: "DOP" },
-                   { nombre: "US DOLLAR", codigo: "USD" }, {nombre: "EURO", codigo: "EUR"}];
-
+    
     bancos: any [] = [
         { label: "BANCO POPULAR DOMINICANO", field: "popular", type: "SIMPLE", operador: "'" },
         { label: "SCOTIABANK", field: "progreso", type: "SIMPLE", operador: "'" },
@@ -31,19 +34,27 @@ export class bancoFilterComponent implements OnInit {
 
     ];
 
+    onLoad(){
+        this.currencyService.getAll().subscribe(curr=>{ 
+            this.currency=curr;
+        })
+        this.bankService.getAll().subscribe(curr=> this.bank=curr)
+    }
     @Output()
     enviarFiltro: EventEmitter<any> = new EventEmitter();
 
     constructor(private apiService: ApiService,
-               public filterService: FilterService) {
+               public currencyService: CurrencyService,
+               public bankService: BankService) {
         this.fechaInicio.setDate(this.fechaFinal.getDate() - 90);//30
         this.filter = new Filter();
         this.filter.seleccionado = this.bancos[0];
-        this.currencyselect = this.monedas[0].codigo;
     }
     
     ngOnInit() {
-this.filterService.setFilters(this.bancos);
+        this.currency=[]
+       
+        this.onLoad()
     }
 
     onDateChange(data) {
@@ -55,27 +66,14 @@ this.filterService.setFilters(this.bancos);
         this.apiService.orderBy(data, ["Id"], true);
 
 
-        if (this.currencyselect != null && this.currencyselect != "null") {
-            this.apiService.addFilter(data, "currencyId", this.currencyselect);
-        }
-
+        
         if (this.fechaInicio && this.fechaFinal)
             //'yyyy-MM-dd'
             this.apiService.addFilter(data, "createdDate", moment(this.fechaInicio).format('YYYY-MM-DD') + "|" + moment(this.fechaFinal).format('YYYY-MM-DD') + " 23:59:59");
 
         else if (this.fechaInicio)
             this.apiService.addFilter(data, "createdDate", moment(this.fechaInicio).format('YYYY-MM-DD') + "|" + moment(this.fechaInicio).format('YYYY-MM-DD') + " 23:59:59");
-
-
-            this.filterService.seleccionado = this.filter.seleccionado;
-            this.filterService.values = this.filter.values;
-
-
-            if (this.filterService.isValid()) {
-                this.apiService.addFilter(data, this.filterService.getField(), this.filterService.getValue());
-            
-            }
-            
+  
         this.enviarFiltro.emit(data);
     }
 }

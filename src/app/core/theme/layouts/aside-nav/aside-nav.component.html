@@ -92,34 +92,38 @@
 								</span>
 							</a>
 						</li>
-						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
-						 aria-haspopup="true">
-
-							<a [attr.href]="reports.depositos" target="_blank" class="m-menu__link">
-								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
-									<span></span>
-								</i>
-								<span class="m-menu__link-text">
-									Reporte Depósitos
-								</span>
-							</a>
-						</li>
-						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
-						 aria-haspopup="true">
-
-							<a [attr.href]="reports.depositosCaja" target="_blank" class="m-menu__link">
-								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
-									<span></span>
-								</i>
-								<span class="m-menu__link-text">
-									Reporte Depósitos Caja
-								</span>
-							</a>
-						</li>
+					
+					
 					</ul>
 				</div>
 			</li>
-			
+			<li class="m-menu__item  m-menu__item--submenu" routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+			aria-haspopup="true" m-menu-submenu-toggle="hover">
+			   <a href="#" class="m-menu__link m-menu__toggle">
+				   <i class="m-menu__link-icon fa fa-cog"></i>
+				   <span class="m-menu__link-text">
+					   Parametros
+				   </span>
+				   <i class="m-menu__ver-arrow la la-angle-right"></i>
+			   </a>
+			   <div class="m-menu__submenu">
+				   <span class="m-menu__arrow"></span>
+				   <ul class="m-menu__subnav">
+					  
+					   <li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
+						aria-haspopup="true">
+						   <a routerLink="/company" class="m-menu__link">
+							   <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+								   <span></span>
+							   </i>
+							   <span class="m-menu__link-text">
+								   Empresas
+							   </span>
+						   </a>
+					   </li>
+				   </ul>
+			   </div>
+		   </li>
 			<li class="m-menu__item  m-menu__item--submenu" routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
 			 aria-haspopup="true" m-menu-submenu-toggle="hover">
 				<a (click)='exit()' class="m-menu__link m-menu__toggle">

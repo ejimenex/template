@@ -27,6 +27,12 @@ const routes: Routes = [
                 loadChildren: ".\/features\/bancos\/banco.module#BancoModule",
             },
             {
+                path: "company",
+               loadChildren: ".\/features\/company\/company.module#CompanyModule"
+                //loadChildren: () => import('.\/features\/company\/company.module').then(m => m.CompanyModule)
+            },
+            
+            {
                 path: "",
                 redirectTo: "index",
                 pathMatch: "full",

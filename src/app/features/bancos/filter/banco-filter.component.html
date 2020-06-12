@@ -32,10 +32,10 @@
                 <label for="example-text-input" class="col-1 col-form-label">
                 Buscar Por Banco:
             </label>
-                <div class="col-3">
+                <div class="col-5">
                     <select class="form-control  m-input" name="bancoselecionado" ([ngmodel])="filter.seleccionado" (change)="bancos.values();">
-                    <option *ngFor="let item of bancos" [ngValue]="item">
-                          {{item.label}}
+                    <option *ngFor="let item of bank" [ngValue]="item.id">
+                          {{item.name}}
                     </option>
                 </select>
                 </div>
@@ -43,10 +43,13 @@
                 <label for="example-text-input" class="col-1 col-form-label">
                 Moneda:
             </label>
-                <div class="col-3">
+                <div class="col-5">
                     <select class="form-control  m-input" name="monedaSeleccionada" [(ngModel)]="currencyselect">
-                    <option *ngFor="let moneda of monedas" [value]="moneda.codigo">
-                        {{moneda.nombre}}
+                        <option selected [value]="0">
+                           --TODOS--
+                        </option>
+                    <option *ngFor="let item of currency" [value]="item.id">
+                        {{item.name}}
                     </option>
                 </select>
                 </div>
