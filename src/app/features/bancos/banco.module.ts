@@ -3,9 +3,9 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { BancoDetailComponent } from "./banco-detail.component";
-import { bancoFilterComponent } from "./banco-filter.component";
+import { bancoFilterComponent } from "./filter/banco-filter.component";
 import { BancoThumbnailComponent } from "./banco-thumbnail.component";
-import { BancoListComponent } from "./banco-list.component";
+import { BancoListComponent } from "./list/banco-list.component";
 import { DefaultComponent } from "../../core/theme/pages/default/default.component";
 import { ApiService } from "../../core/_services/api.service";
 import { LayoutModule } from "../../core/theme/layouts/layout.module";
@@ -17,6 +17,7 @@ import { BankAddComponent } from './add/bank-add.component';
 import {BankService} from '../../core/_services/bank.service';
 import {CurrencyService} from '../../core/_services/currency.service';
 import {CompanyService} from '../../core/_services/company.service';
+import { FileService } from '../../core/_services/file.service';
 
 const routes: Routes = [
     {
@@ -34,15 +35,20 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule, RouterModule.forChild(routes), NgbModule, FormsModule, LayoutModule,
-        SharedModule, ReactiveFormsModule
+        CommonModule,
+         RouterModule.forChild(routes),
+          NgbModule, 
+          FormsModule, 
+          LayoutModule,
+        SharedModule,
+         ReactiveFormsModule
     ], exports: [
         RouterModule,
     ], declarations: [
         BancoListComponent, BankAddComponent, BancoThumbnailComponent, bancoFilterComponent, BancoDetailComponent, BancoAnulacionComponent
     ],
     entryComponents: [ BancoDetailComponent, BancoAnulacionComponent,BankAddComponent],
-    providers: [BankService,CurrencyService,CompanyService]
+    providers: [BankService,CurrencyService,CompanyService,FileService]
 })
 export class BancoModule {
 }
