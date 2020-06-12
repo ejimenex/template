@@ -9,6 +9,7 @@ import { file } from '../../core/_models/file.model';
 import { BancoAddComponent } from './banco-add.component';
 import { Filter } from '../../core/_models/filter';
 import { FilterService } from '../../core/_services/filter.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -68,10 +69,18 @@ export class BancoListComponent implements OnInit {
         });
 
     }*/
+   
 
-    getAll() {
+    getAll( ) {
+       
+        
         this.apiService.getAll().subscribe(result => {
+
+            console.log(result);
             this.files = result});
+
+            
+         
            
       }
 

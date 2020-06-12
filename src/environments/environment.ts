@@ -25,7 +25,7 @@ export const endpoint: any = {
     
 
     transaccionUrl: config.apiUrl + "facturacion/Deposito/Transacciones/",
-    depositsUrl: config.apiArchivo + "File",
+    depositsUrl: config.apiArchivo + "BankFile",
     clienteUrl: config.apiUrl + "sistemas/clientes/",
     motivoAnulacion: config.apiUrl + "facturacion/AnularArchivo",
     monedaUrl: config.apiUrl + "Facturacion/Monedas",
