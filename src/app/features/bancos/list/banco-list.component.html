@@ -33,9 +33,9 @@
                         <div class="m-portlet__head-tools">
                             <ul class="m-portlet__nav">
                                 <li class="m-portlet__nav-item">
-                                    <!-- <a class="btn btn-default" href="" (click)="agregarBanco()">
+                                   <a class="btn btn-default" href="" (click)="agregarBanco()">
                                         <span class="fa fa-upload"></span> Subir
-                                    </a>-->
+                                   </a>
                                 </li>
                                 <li class="m-portlet__nav-item">
                                     <a href="#" m-portlet-tool="reload" (click)="getAll()" class="m-portlet__nav-link m-portlet__nav-link--icon">
@@ -93,6 +93,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <p>Proceso en desarrollo</p>
                                         <ng-container *ngFor="let item of bancos">
                                             <tr app-banco-thumbnail [banco]="item"></tr>
                                         </ng-container>

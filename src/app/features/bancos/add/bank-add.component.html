@@ -12,7 +12,7 @@
                 Empresa:
             </label> <span class="text-danger" *ngIf='!bankFile.companyId'><b> *</b></span>
             <select class="form-control  m-input" name="banco" [(ngModel)]="bankFile.companyId" required>
-                <option *ngFor="let com of companies" [value]="com.code">
+                <option *ngFor="let com of companies" [value]="com.id">
                     {{com.name}}
                 </option>
             </select>
