@@ -4,12 +4,14 @@ import { endpoint } from "../../../../environments/environment";
 import { Helpers } from "../../../helpers";
 import { HttpClient } from "@angular/common/http";
 import { CompanyService } from "../../../core/_services/company.service";
-import { BankService } from "../../../core/_services/bank.service";
 import { CurrencyService } from "../../../core/_services/currency.service";
 import { async } from "rxjs/internal/scheduler/async";
 import { company } from "../../../core/_models/company.model";
 import { Currency } from "../../../core/_models/currency";
 import { Bank } from "../../../core/_models/bank";
+import {BankFilesService} from '../../../core/_services/bankFiles.service';
+import { NgxSpinnerService } from "ngx-spinner";
+import { BankService } from "../../../core/_services/bank.service";
 
 declare var swal: any;
 
@@ -17,7 +19,7 @@ declare var swal: any;
   selector: "app-bank-add",
   templateUrl: "./bank-add.component.html",
 })
-export class BankAddComponent {
+export class BankAddComponent{
   bancoId: string = null;
   companies: company[];
   banks: Bank[];
@@ -34,10 +36,12 @@ export class BankAddComponent {
 
   constructor(
     public activeModal: NgbActiveModal,
+    private loading:NgxSpinnerService,
     protected _http: HttpClient,
     public currencyService: CurrencyService,
     public bankService: BankService,
-    public companyService: CompanyService
+    public companyService: CompanyService,
+    public bankFileService: BankFilesService
   ) {}
   ngOnInit() {
     this.onLoad();
@@ -60,48 +64,36 @@ export class BankAddComponent {
   }
   enviarArchivo() {
     this.inProgress = true;
-    Helpers.setLoading(true);
+    this.loading.show()
     let formData: FormData = new FormData();
 
     if (!this.file) {
       swal("El archivo es obligatorio.", "", "error");
       this.inProgress = false;
-      Helpers.setLoading(false);
+      this.loading.hide()
       return;
     }
 
-    if (!this.bancoId) {
-      swal("El banco es obligatorio.", "", "error");
-      this.inProgress = false;
-      Helpers.setLoading(false);
-      return;
-    }
-
-    if (!this.monedaId) {
-      swal("La moneda es obligatoria.", "", "error");
-      this.inProgress = false;
-      Helpers.setLoading(false);
-      return;
-    }
-
-    formData.append("bancoId", this.bancoId);
-    formData.append("monedaId", this.monedaId);
-
-    formData.append("comentario", this.comentario || "");
+    formData.append("company", this.bankFile.companyId);
+    formData.append("currency", this.bankFile.currencyId);
+    formData.append("bank", this.bankFile.bankId);
+    formData.append("commentary", this.bankFile.commentary);
     var file = $("#file")[0];
     formData.append("archivo", this.file.files[0]);
 
     this.jwt(formData);
-
-    this._http.post(endpoint.depositsUrl + `cargarArchivo`, formData).subscribe(
+    this.bankFileService.uploadFile(formData)
+    .subscribe(
       (r) => {
-        this.activeModal.close("Automatic Close");
+       this.activeModal.close();
+       this.loading.hide()
         swal("Los datos se guardaron correctamente.", "", "success");
         this.notifyParent.emit(r);
       },
       (err) => {
         console.log(err);
-        this.activeModal.close("Automatic Close");
+        this.file=undefined
+        this.loading.hide();
         swal(err.error, "", "error");
         this.inProgress = false;
         Helpers.setLoading(false);

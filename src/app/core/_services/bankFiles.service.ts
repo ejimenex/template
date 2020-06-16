@@ -3,12 +3,15 @@ import { BaseService } from "./base.service";
 import { HttpClient } from "@angular/common/http";
 import { config,endpoint } from "../../../environments/environment";
 import { company } from '../_models/company.model';
+import { bankFiles } from '../_models/bankfiles.model';
 
 @Injectable()
-export class CompanyService extends BaseService<company, number> {
+export class BankFilesService extends BaseService<bankFiles, number> {
 
   constructor(_httpClient: HttpClient) {
-          super(_httpClient,  endpoint.companyUrl);
+          super(_httpClient,  endpoint.bankFiles);
   }
-
+ uploadFile(data:FormData){
+     return this._httpClient.post(endpoint.bankFiles+'/uploadFile',data);
+ }
 }
