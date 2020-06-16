@@ -41,10 +41,12 @@ export class CompanyAddComponent {
       }
 }
   save() {
+    if(this.validate()) return this.alertService.error('Por favor completar todos los campos')
     if (this.id) this.edit();
     else this.add();
   }
   add() {
+  
     this.companyService.post(this.company).subscribe(
       (response) => {
         this.alertService.success("Empresa creada exitosamente");
@@ -52,9 +54,13 @@ export class CompanyAddComponent {
         this.activeModal.close();
       },
       (error) => {
+        
         this.alertService.error(error.error);
       }
     );
+  }
+  validate(){
+    return (!this.company.documentNumber || !this.company.name || !this.company.code)
   }
   edit() {
     this.alertService.question(() => {

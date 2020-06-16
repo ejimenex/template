@@ -29,6 +29,7 @@ export const endpoint: any = {
   companyUrl: config.apiArchivo + "company",
   bankUrl: config.apiArchivo + "bank",
   currencyUrl: config.apiArchivo + "currency",
+  bankFiles: config.apiArchivo + "bankFile",
 
   transaccionUrl: config.apiUrl + "facturacion/Deposito/Transacciones/",
   depositsUrl: config.apiUrl + "facturacion/Deposito/",

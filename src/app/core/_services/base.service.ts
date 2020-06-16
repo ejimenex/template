@@ -15,7 +15,7 @@ export class BaseService<TEntity, TKey> implements IService<TEntity, TKey> {
   public set baseUrl(value: string) {
     this._baseUrl = value;
   }
-  private httpOptions = {
+  public httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
