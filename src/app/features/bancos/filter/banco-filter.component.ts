@@ -6,6 +6,8 @@ import { CurrencyService } from '../../../core/_services/currency.service';
 import { BankService } from '../../../core/_services/bank.service';
 import { Currency } from '../../../core/_models/currency';
 import { Bank } from '../../../core/_models/bank';
+import { FilebankService } from '../../../core/_services/filebank.service';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
     selector: 'app-banco-filter',
@@ -14,30 +16,20 @@ import { Bank } from '../../../core/_models/bank';
 })
 export class bancoFilterComponent implements OnInit {
 
+  
+
     page: number = 1;
     pageSize: number = 10;
     fechaInicio: Date = new Date();
     fechaFinal: Date = new Date();
+    filter: any={};
     currencyselect: any; 
-    filter: Filter;
-    seleccionado: any; 
+    bankselect: number; 
     currency:Currency[]
     bank:Bank[]
 
-    
-    bancos: any [] = [
-        { label: "BANCO POPULAR DOMINICANO", field: "popular", type: "SIMPLE", operador: "'" },
-        { label: "SCOTIABANK", field: "progreso", type: "SIMPLE", operador: "'" },
-        { label: "CITIBANK N.A", field: "citibank", type: "SIMPLE", operador: "'" },
-        { label: "BANCO DE RESERVA", field: "banreserva", type: "SIMPLE", operador: "'" },
-        { label: "BANCO BHD", field: "bhd", type: "SIMPLE", operador: "'" },
-
-    ];
-
     onLoad(){
-        this.currencyService.getAll().subscribe(curr=>{ 
-            this.currency=curr;
-        })
+        this.currencyService.getAll().subscribe(curr=> this.currency=curr)
         this.bankService.getAll().subscribe(curr=> this.bank=curr)
     }
     @Output()
@@ -45,35 +37,45 @@ export class bancoFilterComponent implements OnInit {
 
     constructor(private apiService: ApiService,
                public currencyService: CurrencyService,
-               public bankService: BankService) {
+               public bankService: BankService,
+               public fileBankServices : FilebankService) {
         this.fechaInicio.setDate(this.fechaFinal.getDate() - 90);//30
-        this.filter = new Filter();
-        this.filter.seleccionado = this.bancos[0];
+       // this.filter = new Filter();
+
+        // this.filter.seleccionado = this.bancos[0];
     }
     
     ngOnInit() {
         this.currency=[]
+        this.bank =[]
        
         this.onLoad()
+        
+        this.buscar()
     }
 
     onDateChange(data) {
     }
 
     buscar(): void {
-        //var data = {};
-        var data: any = {};
-        this.apiService.orderBy(data, ["Id"], true);
+        var data = {};
+        //var data: any = {};
+        this.fileBankServices.orderBy(data, ["Id"], true);
 
+        this.enviarFiltro.emit(this.filter);
+        console.log(this.currencyselect);
 
-        
-        if (this.fechaInicio && this.fechaFinal)
-            //'yyyy-MM-dd'
-            this.apiService.addFilter(data, "createdDate", moment(this.fechaInicio).format('YYYY-MM-DD') + "|" + moment(this.fechaFinal).format('YYYY-MM-DD') + " 23:59:59");
+        if(this.currencyselect != null){
+            this.fileBankServices.searchCurrency(this.currencyselect);
+        }
+    
+        // if (this.fechaInicio && this.fechaFinal)
+        //     //'yyyy-MM-dd'
+        //     this.fileBankServices.search(data, "createdDate", moment(this.fechaInicio).format('YYYY-MM-DD') + "|" + moment(this.fechaFinal).format('YYYY-MM-DD') + " 23:59:59");
 
-        else if (this.fechaInicio)
-            this.apiService.addFilter(data, "createdDate", moment(this.fechaInicio).format('YYYY-MM-DD') + "|" + moment(this.fechaInicio).format('YYYY-MM-DD') + " 23:59:59");
+        // else if (this.fechaInicio)
+        //     this.fileBankServices.search(data, "createdDate", moment(this.fechaInicio).format('YYYY-MM-DD') + "|" + moment(this.fechaInicio).format('YYYY-MM-DD') + " 23:59:59");
   
-        this.enviarFiltro.emit(data);
+        // this.enviarFiltro.emit(data);
     }
 }

@@ -9,7 +9,12 @@ import { file } from '../../../core/_models/file.model';
 import { BankAddComponent } from '../add/bank-add.component';
 import { Filter } from '../../../core/_models/filter';
 import { FilterService } from '../../../core/_services/filter.service';
-import { NgForm } from '@angular/forms';
+import{FilebankService} from '../../../core/_services/filebank.service';
+import { Currency } from '../../../core/_models/currency';
+import { Bank } from '../../../core/_models/bank';
+import { CurrencyService } from '../../../core/_services/currency.service';
+import { BankService } from '../../../core/_services/bank.service';
+import { AlertService } from '../../../core/_services/alert.service';
 
 
 @Component({
@@ -19,59 +24,70 @@ import { NgForm } from '@angular/forms';
 })
 export class BancoListComponent implements OnInit {
 
-    @Input()
+    @Input() filter:any={}
     files: file[];
-    bancos: any[];
-
-    fechaInicio: Date = new Date();
-    fechaFinal: Date = new Date();
+   
     currencyselect: any; 
-    filter: Filter;
     seleccionado: any;
-    apiurl: ""; 
-
+    currency:Currency[]
+    bank:Bank[]
     page: number = 1;
-    pageSize: number = 10;
-    collectionSize: number;
+    dataPage:any={};
 
     constructor(private modalService: NgbModal, 
-                private apiService: FileService, 
-                private filterService: FilterService) {
-        this.fechaInicio.setDate(this.fechaFinal.getDate() - config.dias);//30
+                private alertService: AlertService    , 
+                
+               public currencyService: CurrencyService,
+               public bankService: BankService,
+                private filterService: FilebankService) {
+      
     }
 
 
     ngOnInit() {
-        // this.apiurl = endpoint.transaccionUrl;
-        //  Helpers.setLoading(true);
+    
         this.getAll();
+        this.onLoad();         
     }
 
     agregarBanco() {
 
         var modal = this.modalService.open(BankAddComponent, config.modalConfig);
         modal.componentInstance.monedas = [];
-
-        var data = {};
         modal.componentInstance.notifyParent.subscribe(result => {
             this.getAll();
         });
-
     }
    
 
+    onLoad(){
+        this.currencyService.getAll().subscribe(curr=> this.currency=curr)
+        this.bankService.getAll().subscribe(curr=> this.bank=curr)
+    }
+
     getAll( ) {
-       
         
-        this.apiService.getAll().subscribe(result => {
+             if(!this.filter.currencyId) this.filter.currencyId=''
+             if(!this.filter.bankId) this.filter.bankId=''
+             if(!this.filter.startDate) this.filter.startDate=''
+             this.filter.endDate=!this.filter.endDate?'':this.filter.endDate;
+                     this.filterService.getPaged(this.filter,this.page).subscribe(response => { 
+          this.files = response.data;
+          this.dataPage=response
+          },error=>{
+              this.alertService.error(error.error)
+          })       
+ }
 
-            console.log(result);
-            this.files = result});
+ 
 
-            
-         
-           
+      changePage(next:boolean){;
+        this.page=next?this.page +=1:this.page -=1;
+        if(this.page<0) this.page=0;
+        this.getAll()
       }
+
+     
 
     /*getAll() {
 

@@ -4,14 +4,14 @@ import { endpoint } from "../../../../environments/environment";
 import { Helpers } from "../../../helpers";
 import { HttpClient } from "@angular/common/http";
 import { CompanyService } from "../../../core/_services/company.service";
-import { BankService } from "../../../core/_services/bank.service";
 import { CurrencyService } from "../../../core/_services/currency.service";
 import { async } from "rxjs/internal/scheduler/async";
 import { company } from "../../../core/_models/company.model";
 import { Currency } from "../../../core/_models/currency";
 import { Bank } from "../../../core/_models/bank";
-import {BankFilesService} from '../../../core/_services/bankFiles.service'
+import {BankFilesService} from '../../../core/_services/bankFiles.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { BankService } from "../../../core/_services/bank.service";
 
 declare var swal: any;
 
@@ -19,7 +19,7 @@ declare var swal: any;
   selector: "app-bank-add",
   templateUrl: "./bank-add.component.html",
 })
-export class BankAddComponent {
+export class BankAddComponent{
   bancoId: string = null;
   companies: company[];
   banks: Bank[];
