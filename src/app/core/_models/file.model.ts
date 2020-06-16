@@ -1,5 +1,6 @@
 import {BaseModel } from './base.modeol';
 import { DecimalPipe } from '@angular/common';
+import { Currency } from './currency';
 
 
 export class file extends BaseModel
@@ -10,7 +11,14 @@ export class file extends BaseModel
    companyId : number
    companyName : string
    totalAmount : DecimalPipe
-   Quantity : number
-   Status: string
-   Commentary : string
+   quantity : number
+   status: string
+   commentary : string
+   date:Date
+   bank:string
+   currency:string
+   total:number
+   lastUpdate:Date
+   totalUpdate:number
+
 }

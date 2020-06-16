@@ -66,6 +66,8 @@ export class DepositoFilterComponent implements OnInit {
             this.apiService.addFilter(data, "moneda", this.monedaSeleccionada);
         }
 
+        console.log(this.monedaSeleccionada);
+
         if (this.fechaInicio && this.fechaFinal) {
             // 'yyyy-MM-dd'
             this.apiService.addFilter(data, "Fecha", moment(this.fechaInicio).format("YYYY-MM-DD") + "|" + moment(this.fechaFinal).format("YYYY-MM-DD") + " 23:59:59");

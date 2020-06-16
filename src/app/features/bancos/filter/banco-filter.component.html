@@ -33,7 +33,7 @@
                 Buscar Por Banco:
             </label>
                 <div class="col-5">
-                    <select class="form-control  m-input" name="bancoselecionado" ([ngmodel])="filter.seleccionado" (change)="bancos.values();">
+                    <select class="form-control  m-input" name="bankselect" ([ngmodel])="filter.bankselect">
                     <option *ngFor="let item of bank" [ngValue]="item.id">
                           {{item.name}}
                     </option>
@@ -44,7 +44,7 @@
                 Moneda:
             </label>
                 <div class="col-5">
-                    <select class="form-control  m-input" name="monedaSeleccionada" [(ngModel)]="currencyselect">
+                    <select class="form-control  m-input" name="currencyselect" [(ngModel)]="filter.currencyselect">
                         <option selected [value]="0">
                            --TODOS--
                         </option>

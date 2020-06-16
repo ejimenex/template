@@ -17,6 +17,8 @@ import { BankAddComponent } from './add/bank-add.component';
 import {BankService} from '../../core/_services/bank.service';
 import {CurrencyService} from '../../core/_services/currency.service';
 import {CompanyService} from '../../core/_services/company.service';
+
+import {FilebankService} from '../../core/_services/filebank.service';
 import { FileService } from '../../core/_services/file.service';
 
 const routes: Routes = [
@@ -48,7 +50,7 @@ const routes: Routes = [
         BancoListComponent, BankAddComponent, BancoThumbnailComponent, bancoFilterComponent, BancoDetailComponent, BancoAnulacionComponent
     ],
     entryComponents: [ BancoDetailComponent, BancoAnulacionComponent,BankAddComponent],
-    providers: [BankService,CurrencyService,CompanyService,FileService]
+    providers: [BankService,CurrencyService,CompanyService,FileService,FilebankService]
 })
 export class BancoModule {
 }
