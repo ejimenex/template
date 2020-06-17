@@ -24,28 +24,25 @@ export class DetailBankFileComponent implements OnInit {
     page: number = 1;
     filter:any={};
     dataPage:any={};
-    status: any[] = [
-        { label: "Anulada", field: "A" },
-        { label: "Enviada", field: "E" },
-        { label: "Disponible", field: "D" },
-
-    ];
 
     constructor(private apiService: BankFilesDetailService, private alert:AlertService) {
     }
 
     ngOnInit() {
-        this.getAll(false);
+        this.getAll(false,this.filter);
     }
 
-    getAll(resetPage:boolean ) {
-        
-        // if(!this.filter.currencyId) this.filter.currencyId=''
-        // if(!this.filter.bankId) this.filter.bankId=''
-        // if(!this.filter.startDate) this.filter.startDate=''
-        // this.filter.endDate=!this.filter.endDate?'':this.filter.endDate;
+    getAll(resetPage:boolean, filter:any ) {
+         filter.endDate=!this.filter.endDate?'':this.filter.endDate;
+         filter.startDate=!this.filter.startDate?'':this.filter.startDate;
+         filter.currencyId=!this.filter.currencyId?0:this.filter.currencyId;
+         filter.bankId=!this.filter.bankId?0:this.filter.bankId;
+         filter.companyId=!this.filter.companyId?0:this.filter.companyId;
+         filter.idHeader=!this.filter.idHeader?'':this.filter.idHeader;
+         filter.idDetail=!this.filter.idDetail?'':this.filter.idDetail;
+         filter.status=!this.filter.status?'':this.filter.status;
         if(resetPage) this.page=1
-                this.apiService.getPaged(this.filter,this.page).subscribe(response => { 
+                this.apiService.getPaged(filter,this.page).subscribe(response => { 
      this.detail = response.data.map(res=>{
          switch (res['status'])
          {
@@ -64,14 +61,18 @@ export class DetailBankFileComponent implements OnInit {
      this.dataPage=response
      },error=>{
          this.alert.error(error.error)
+         this.detail=[]
      })       
 }
 
 
-
+getAllByComponent(filter:any){
+    this.filter=filter;
+    this.getAll(true,filter)
+}
  changePage(next:boolean){;
    this.page=next?this.page +=1:this.page -=1;
    if(this.page<0) this.page=0;
-   this.getAll(false)
+   this.getAll(false,this.filter)
  }
 }

@@ -20,7 +20,7 @@
         <!--Begin::Section-->
         <div class="row">
             <div class="col-xl-12">
-                <app-deposito-filter (enviarFiltro)="filterChange($event)"></app-deposito-filter>
+                <app-deposito-filter (enviarFiltro)="getAllByComponent($event);filter=filter"></app-deposito-filter>
                 <div class="m-portlet m-portlet--tab" m-portlet="true">
                     <div class="m-portlet__head">
                         <div class="m-portlet__head-caption">
