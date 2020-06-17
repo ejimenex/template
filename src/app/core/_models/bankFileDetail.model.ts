@@ -10,4 +10,8 @@ serialNumber:string
 transactionType:number
 postDate:Date
 commentary:string
+companyName:string
+bankName:string
+currency:string
+statusName:string
 }

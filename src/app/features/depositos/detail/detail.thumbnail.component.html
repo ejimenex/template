@@ -1,51 +1,44 @@
 <th scope="row">
-    {{deposito.id}}
-    <span *ngIf="deposito.estatus=='A'" [ngClass]="{'m-badge--danger':deposito.estatus=='A'}"
-        class="m-badge m-badge--wide">Anulado</span>
+    {{deposito.companyName}}
+
 </th>
 <td>
-    {{deposito.clienteNombre}}
+    {{deposito.id}}
 </td>
 <td>
-    {{deposito.fecha | date:"dd-MMM-yyyy"}}
+    {{deposito.bankFileId}}
 </td>
 <td>
-    {{deposito.descripcion}}
+    {{deposito.postDate | date }}
 </td>
 <td>
-    {{deposito.bancoNombre}}
+    {{deposito.bankName}}
 </td>
 <td>
-    {{deposito.noRecibo}}
+    {{deposito.currency}}
 </td>
 <td class="text-right">
-    {{deposito.monto_Ingreso | currency}}
+    {{deposito.amount | currency}}
+</td>
+<td>
+    {{deposito.description}}
 </td>
 <td class="text-right">
-    {{deposito.monto_Aplicado | currency}}
-</td>
-<td class="text-right">
-    {{deposito.monto_Pendiente | currency}}
+   
 </td>
 
 <td>
-    {{deposito.comentario}}
+    <h4 class="{{deposito.class}}">
+    {{deposito.statusName}}</h4>
 </td>
-<td>
-    {{deposito.userMod }} <br>
-    {{deposito.fechaMod | date:"dd-MMM-yyyy"}}
-</td>
+
 <td>
     <div class="dropdown">
         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             Acciones
         </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item m--font-primary" href="#"
-                (click)="asignarCliente(deposito.id, deposito.id_Cliente)">
-                <i class="fa fa-pencil" aria-hidden="true"></i> Asignar Cliente
-            </a>
+        <!-- <div class="dropdown-menu">
             <a class="dropdown-item m--font-info" href="#"
                 (click)="agregarComentario(deposito.id, deposito.comentario)">
                 <i class="fa fa-plus" aria-hidden="true"></i> Agregar Comentario
@@ -62,7 +55,7 @@
             <a class="dropdown-item m--font-danger " href="#" *ngIf="deposito.estatus=='A'" (click)="verAnulacion() ">
                 <i class="fa fa-times " aria-hidden="true "></i> Ver Anulación
             </a>
-        </div>
+        </div> -->
     </div>
 
 </td>
