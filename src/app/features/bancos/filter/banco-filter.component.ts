@@ -67,7 +67,9 @@ export class bancoFilterComponent implements OnInit {
 
         // if(this.currencyselect != null){
         //     this.fileBankServices.searchCurrency(this.currencyselect);
+
         }
+
     
         // if (this.fechaInicio && this.fechaFinal)
         //     //'yyyy-MM-dd'

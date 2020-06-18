@@ -1,10 +1,10 @@
 import { Component, Host, Input, OnInit, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { endpoint, config } from "../../../environments/environment";
+import { endpoint, config } from "../../../../environments/environment";
 import { BancoDetailComponent } from './banco-detail.component';
-import { BancoListComponent } from './list/banco-list.component';
-import { ApiService } from '../../core/_services/api.service';
-import { BancoAnulacionComponent } from './banco-anular/banco-anular.component';
+import { BancoListComponent } from '../list/banco-list.component';
+import { ApiService } from '../../../core/_services/api.service';
+import { BancoAnulacionComponent } from '../banco-anular/banco-anular.component';
 
 
 @Component({
