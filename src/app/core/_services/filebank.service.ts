@@ -20,9 +20,6 @@ export class FilebankService extends BaseService<fileBank, number> {
   getPaged(filter:any,page:number){
     return this._httpClient.get<any>(endpoint.listFile+`?PageNumber=${page}&pageSize=10&bankId=${filter.bankId}&currencyId=${filter.currencyId}&startDate=${filter.startDate}&endDate=${filter.endDate}`);
   }
-
-
-
   fileDetail(filter: any){
 
     return this._httpClient.get<any>(endpoint.bankFiles+`/${filter.bankId}/${filter.currencyId}/${filter.date}`)

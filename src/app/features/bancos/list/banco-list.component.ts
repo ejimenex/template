@@ -72,7 +72,7 @@ export class BancoListComponent implements OnInit {
     }
 
     viewDetail (item){
-        debugger
+     
             var modal = this.modalService.open(BancoDetailComponent, config.modalConfig);
             modal.componentInstance.filter = item;
     }
