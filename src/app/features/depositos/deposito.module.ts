@@ -10,11 +10,12 @@ import { DepositoAnulacionComponent } from "./deposito-anular.component";
 import { DepositoCommentComponent } from "./deposito-comment.component";
 import { DepositoCostumerComponent } from "./deposito-costumer.component";
 import { DepositoFilterComponent } from "./deposito-filter.component";
-import { DepositoThumbnailComponent } from "./deposito.thumbnail.component";
-import { DepositoListComponent } from "./depositoList.component";
+import { DetailThumbnailComponent } from "./detail/detail.thumbnail.component";
+import { DetailBankFileComponent } from "./list/detailBankFile.component";
 import { DefaultComponent } from "../../core/theme/pages/default/default.component";
 import { LayoutModule } from '../../core/theme/layouts/layout.module';
 import { DepositoDetailAnulacionComponent } from './deposito-detail-anulacion/deposito-detail-anulacion.component';
+import { BankFilesDetailService } from '../../core/_services/bankFilesDetail.service';
 
 
 
@@ -27,7 +28,7 @@ const routes: Routes = [
         "children": [
             {
                 "path": "",
-                "component": DepositoListComponent,
+                "component": DetailBankFileComponent,
             },
         ],
     },
@@ -39,10 +40,10 @@ const routes: Routes = [
     ], exports: [
         RouterModule,
     ], declarations: [
-        DepositoListComponent, DepositoThumbnailComponent, DepositoFilterComponent, DepositoCommentComponent, DepositoCostumerComponent,
+        DetailBankFileComponent, DetailThumbnailComponent, DepositoFilterComponent, DepositoCommentComponent, DepositoCostumerComponent,
         DepositoAnulacionComponent, DepositoDetailAnulacionComponent
     ],
-    // providers: [ApiService, FilterService, AlertService],
+     providers: [BankFilesDetailService],
     entryComponents: [DepositoCommentComponent, DepositoCostumerComponent, DepositoAnulacionComponent, DepositoDetailAnulacionComponent]
 })
 export class DepositoModule {
