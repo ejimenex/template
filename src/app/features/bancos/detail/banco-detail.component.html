@@ -29,19 +29,19 @@
                         </td>
                         <td>{{item.commentary}}</td>
                         <td>
-                            <!-- <div class="dropdown">
+                            <div class="dropdown">
                                 <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" a1ria-expanded="false">
                                     Acciones
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item m--font-primary" *ngIf="item.documentoId" [attr.href]="archivoUrl+item.documentoId" target="_blank">
+                                    <a class="dropdown-item m--font-primary" [attr.href]="dowloand+item.id" target="_blank">
                                         <i class="fa fa-download"></i> Descargar
                                     </a>
-                                    <a *ngIf="item.cantidad != 0" class="dropdown-item m--font-primary" href="#" (click)="anular(item)">
+                                    <a *ngIf="item.quantity != 0" class="dropdown-item m--font-primary" href="#" (click)="anular(item)">
                                         <i class="fa fa-times" aria-hidden="true"></i> Anular
                                     </a>
                                 </div>
-                            </div> -->
+                            </div>
                         </td>
                     </tr>
                 </tbody>

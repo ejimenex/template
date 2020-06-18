@@ -7,6 +7,8 @@ import { BancoAnulacionComponent } from '../banco-anular/banco-anular.component'
 import { FilebankService } from '../../../core/_services/filebank.service';
 import { file } from '../../../core/_models/file.model';
 import { AlertService } from '../../../core/auth/_services/alert.service';
+import { bankFilesDetail } from '../../../core/_models/bankFileDetail.model';
+import { BankFilesDetailService } from '../../../core/_services/bankFilesDetail.service';
 
 declare var swal: any;
 
@@ -22,9 +24,9 @@ export class BancoDetailComponent {
     files: file[];
     filter:any={}
     archivoUrl: string = endpoint.fileServiceUrl;//item.documentoId
+    dowloand: string = endpoint.detaild
     @Output()
     notifyParent: EventEmitter<any> = new EventEmitter();
-
 
     constructor(private modalService: NgbModal, 
         private filterService: FilebankService,
@@ -49,8 +51,6 @@ ngOnInit(){
             this.notifyParent.emit(result);
         });
     }
-
-
     getAll() {
         this.filterService.fileDetail(this.filter).subscribe(resp => { 
             this.files = resp;
