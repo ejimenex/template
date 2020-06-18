@@ -7,8 +7,6 @@ import { Helpers } from "../../../helpers";
 import { FileService } from "../../../core/_services/file.service";
 import { file } from "../../../core/_models/file.model";
 import { BankAddComponent } from "../add/bank-add.component";
-import { Filter } from "../../../core/_models/filter";
-import { FilterService } from "../../../core/_services/filter.service";
 import { FilebankService } from "../../../core/_services/filebank.service";
 import { Currency } from "../../../core/_models/currency";
 import { Bank } from "../../../core/_models/bank";
@@ -40,8 +38,7 @@ export class BancoListComponent implements OnInit {
 
     public currencyService: CurrencyService,
     public bankService: BankService,
-    private filterService: FilebankService,
-    private apiService: ApiService
+    private filterService: FilebankService
   ) {}
 
   ngOnInit() {

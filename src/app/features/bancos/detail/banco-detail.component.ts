@@ -20,6 +20,7 @@ export class BancoDetailComponent {
   files: file[];
   filter: any = {};
   archivoUrl: string = endpoint.fileServiceUrl; //item.documentoId
+  dowloand: string = endpoint.detaild
   @Output()
   notifyParent: EventEmitter<any> = new EventEmitter();
 
