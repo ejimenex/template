@@ -62,9 +62,14 @@ export class DetailBankFileComponent implements OnInit {
      },error=>{
          this.alert.error(error.error)
          this.detail=[]
+         this.dataPage={}
      })       
 }
-
+reload()
+{
+    this.filter={}
+    this.getAll(true,this.filter);
+}
 
 getAllByComponent(filter:any){
     this.filter=filter;

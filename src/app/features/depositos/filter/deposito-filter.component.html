@@ -44,7 +44,7 @@
                     <select class="form-control  m-input" name="bank" [(ngModel)]="filter.bankId"
                         >
                         <option [value]='0' selected>--Todos--</option>
-                        <option *ngFor="let item of bank" [ngValue]="item.id">
+                        <option   *ngFor="let item of bank" [ngValue]="item.id">
                             {{item.name}}
                         </option>
                     </select>
@@ -88,7 +88,7 @@
                     Fecha Final:
                 </label>
                 <div class="col-3">
-                    <input name="endDate" type="date" class="form-control" [(ngModel)]="filter.endDate"
+                    <input name="endDate"  type="date" class="form-control" [(ngModel)]="filter.endDate"
                        />
                 </div>
                 <label for="example-text-input" class="col-1 col-form-label">
@@ -97,7 +97,7 @@
                 <div class="col-3">
                     <select class="form-control  m-input" name="status" [(ngModel)]="filter.status">
                        
-                        <option selected value="">  Todos </option>
+                        <option selected value="">  --Todos-- </option>
                         <option value="A">  Anulado </option>
                         <option value="D"> Disponible </option>
                         <option value="E">  Enviado </option>
@@ -110,14 +110,14 @@
                     No Archivo
                 </label>
                 <div class="col-3">
-                    <input name="noRegister" type="text" class="form-control" [(ngModel)]="filter.idHeader"
+                    <input name="noRegister" (keyup.enter)='find()' type="text" class="form-control" [(ngModel)]="filter.idHeader"
                     />
                 </div>
                 <label for="example-text-input" class="col-1 col-form-label">
                     No Secuencia
                 </label>
                 <div class="col-3">
-                    <input name="noSecuencoa" type="text" class="form-control" [(ngModel)]="filter.idDetail"
+                    <input name="noSecuencoa" (keyup.enter)='find()' type="text" class="form-control" [(ngModel)]="filter.idDetail"
                     />
                 </div>
             </div>
