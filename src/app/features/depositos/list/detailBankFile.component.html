@@ -20,7 +20,7 @@
         <!--Begin::Section-->
         <div class="row">
             <div class="col-xl-12">
-                <app-deposito-filter (enviarFiltro)="filterChange($event)"></app-deposito-filter>
+                <app-deposito-filter (enviarFiltro)="getAllByComponent($event);filter=filter"></app-deposito-filter>
                 <div class="m-portlet m-portlet--tab" m-portlet="true">
                     <div class="m-portlet__head">
                         <div class="m-portlet__head-caption">
@@ -34,7 +34,7 @@
                         <div class="m-portlet__head-tools">
                             <ul class="m-portlet__nav">
                                 <li class="m-portlet__nav-item">
-                                    <a href="#" m-portlet-tool="reload" (click)="getAll()"
+                                    <a href="#" m-portlet-tool="reload" (click)="reload()"
                                         class="m-portlet__nav-link m-portlet__nav-link--icon">
                                         <i class="la la-refresh"></i>
                                     </a>
@@ -67,10 +67,10 @@
                                                 Empresa
                                             </th>
                                             <th>
-                                                No. Registro
+                                                No. Secuencia
                                             </th>
                                             <th>
-                                                No. Cabecera
+                                                No. Archivo
                                             </th>
                                             <th>
                                                 Fecha
