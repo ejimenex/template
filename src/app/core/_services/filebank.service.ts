@@ -22,26 +22,13 @@ export class FilebankService extends BaseService<fileBank, number> {
   }
 
 
+
   fileDetail(filter: any){
 
     return this._httpClient.get<any>(endpoint.bankFiles+`/${filter.bankId}/${filter.currencyId}/${filter.date}`)
 
   }
-
-
 }
-//   searchCurrency(currencyId :number){
-
-//      return this._httpClient.get<any>(endpoint.listFile + `?CurrencyId=${currencyId}`).subscribe();
-
-    
-//  }
-
-//  searchBank (bankId:number){
-//    return this._httpClient.get<any>(endpoint.listFile + `?BankId=${bankId}`).subscribe();
-//  }
-  
-
 
 
 

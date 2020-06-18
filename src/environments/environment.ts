@@ -29,7 +29,7 @@ export const endpoint: any = {
   companyUrl: config.apiArchivo + "company",
   bankUrl: config.apiArchivo + "bank",
   currencyUrl: config.apiArchivo + "currency",
-
+  detail: config.apiArchivo + "bankFileDetail",
   listFile: config.apiArchivo + "ListFile",
 
   bankFiles: config.apiArchivo + "bankFile",

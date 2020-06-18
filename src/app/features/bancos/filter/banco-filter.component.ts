@@ -62,12 +62,14 @@ export class bancoFilterComponent implements OnInit {
         //var data: any = {};
         // this.fileBankServices.orderBy(data, ["Id"], true);
 
-        this.enviarFiltro.emit(this.filter);
-        console.log(this.currencyselect);
+        // this.enviarFiltro.emit(this.filter);
+        // console.log(this.currencyselect);
 
         // if(this.currencyselect != null){
         //     this.fileBankServices.searchCurrency(this.currencyselect);
-        // }
+
+        }
+
     
         // if (this.fechaInicio && this.fechaFinal)
         //     //'yyyy-MM-dd'
@@ -77,5 +79,5 @@ export class bancoFilterComponent implements OnInit {
         //     this.fileBankServices.search(data, "createdDate", moment(this.fechaInicio).format('YYYY-MM-DD') + "|" + moment(this.fechaInicio).format('YYYY-MM-DD') + " 23:59:59");
   
         // this.enviarFiltro.emit(data);
-    }
+    //}
 }
