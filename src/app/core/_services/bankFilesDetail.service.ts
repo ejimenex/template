@@ -14,4 +14,6 @@ export class BankFilesDetailService extends BaseService<bankFilesDetail, number>
   getPaged(filter:any,page:number){
     return this._httpClient.get<any>(endpoint.detail+`/getPaged?PageNumber=${page}&pageSize=10&bankId=${filter.bankId}&currencyId=${filter.currencyId}&companyId=${filter.companyId}&idHeader=${filter.idHeader}&idDetail=${filter.idDetail}&status=${filter.status}&startDate=${filter.startDate}&endDate=${filter.endDate}`);
   }
+  
+  
 }

@@ -30,6 +30,7 @@ export const endpoint: any = {
   bankUrl: config.apiArchivo + "bank",
   currencyUrl: config.apiArchivo + "currency",
   detail: config.apiArchivo + "bankFileDetail",
+  detaild: config.apiArchivo + "bankFileDetail/print/",
   listFile: config.apiArchivo + "ListFile",
 
   bankFiles: config.apiArchivo + "bankFile",
