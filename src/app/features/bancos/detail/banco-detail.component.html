@@ -6,7 +6,7 @@
 </div>
 <div class="modal-body">
     <div class="m-section">
-        <div class="m-section__content">
+        <div class="m-section__content text-center">
             <table class="table table-striped m-table">
                 <thead>
                     <tr>
@@ -19,32 +19,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of depositos">
+                    <tr *ngFor="let item of files">
                         <th scope="row">{{item.id}}</th>
-                        <td>{{item.fechaCreacion | date:"dd/MMM/yyyy hh:mm a"}}</td>
-                        <td>{{item.creadoPor}}</td>
-                        <td>{{item.cantidad}}</td>
+                        <td>{{item.createdDate | date:"dd/MMM/yyyy hh:mm a"}}</td>
+                        <td>{{item.createdBy}}</td>
+                        <td>{{item.quantity}}</td>
                         <td class="text-right">
-                            {{item.monto | currency}}
+                            {{item.totalAmount | currency}}
                         </td>
-                        <td>{{item.comentario}}</td>
+                        <td>{{item.commentary}}</td>
                         <td>
-                            <div class="dropdown">
-                                <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                            <!-- <div class="dropdown">
+                                <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" a1ria-expanded="false">
                                     Acciones
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item m--font-primary" *ngIf="item.documentoId" [attr.href]="archivoUrl+item.documentoId"
-                                        target="_blank">
+                                    <a class="dropdown-item m--font-primary" *ngIf="item.documentoId" [attr.href]="archivoUrl+item.documentoId" target="_blank">
                                         <i class="fa fa-download"></i> Descargar
                                     </a>
-                                    <a *ngIf="item.cantidad != 0" class="dropdown-item m--font-primary" href="#"
-                                        (click)="anular(item)">
+                                    <a *ngIf="item.cantidad != 0" class="dropdown-item m--font-primary" href="#" (click)="anular(item)">
                                         <i class="fa fa-times" aria-hidden="true"></i> Anular
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </td>
                     </tr>
                 </tbody>

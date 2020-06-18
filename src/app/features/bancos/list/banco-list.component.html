@@ -53,30 +53,29 @@
                         <div class="m-portlet__body">
                             <div class="form-group m-form__group row">
                                 <label for="example-text-input" class="col-1 col-form-label">
-                Buscar Por Banco:
-            </label>
+                                            Buscar Por Banco:
+                                        </label>
                                 <div class="col-5">
                                     <select class="form-control  m-input" name="bankselect" [(ngModel)]="filter.bankId">
-                    <option *ngFor="let item of bank" [ngValue]="item.id">
-                          {{item.name}}
-                    </option>
-                </select>
+                                 <option *ngFor="let item of bank" [ngValue]="item.id">
+                                   {{item.name}}
+                                </option>
+                                 </select>
                                 </div>
 
                                 <label for="example-text-input" class="col-1 col-form-label">
-                Moneda:
-            </label>
+                                    Moneda:
+                                 </label>
                                 <div class="col-5">
                                     <select class="form-control  m-input" name="currencyselect" [(ngModel)]="filter.currencyId">
-                        <option selected [value]="0">
-                           --TODOS--
-                        </option>
-                    <option *ngFor="let item of currency" [value]="item.id">
-                        {{item.name}}
-                    </option>
-                </select>
+                                     <option selected [value]="0">
+                                     --TODOS--
+                                     </option>
+                                     <option *ngFor="let item of currency" [value]="item.id">
+                                    {{item.name}}
+                                     </option>
+                                     </select>
                                 </div>
-
                             </div>
 
 
@@ -97,10 +96,10 @@
                         </div>
                         <div class="m-portlet__foot m-portlet__foot--fit">
                             <div class="m-form__actions">
-                                <a href="#" class="btn btn-primary" (click)="getAll()">
+                                <a href="#" class="btn btn-primary" (click)="getAll(true)">
                     Buscar
                 </a>
-                                <button type="reset" class="btn btn-secondary">
+                                <button type="button" (click)='filter={}' class="btn btn-secondary">
                     Cancelar
                 </button>
                             </div>
@@ -188,18 +187,30 @@
                                             <td>{{item.lastUpdate | date: "dd/MM/yyyy hh:mm a"}}</td>
                                             <td>{{item.quantity}}</td>
                                             <td>{{item.total | currency}}</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Acciones
+                                                        </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item m--font-primary" href="#" (click)="viewDetail(item)">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i> Ver Detalles
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
-                                        <!-- <ng-container *ngFor="let item of data">
-                                            <tr app-banco-thumbnail [banco]="data"></tr>
-                                        </ng-container> -->
 
+                                        <!-- <ng-container *ngFor="let item of files">
+                                            <tr app-banco-thumbnail [banco]="files"></tr>
+                                        </ng-container> -->
                                     </tbody>
                                 </table>
                                 <div class="col-xs-12 col-12 d-sm-down-none">
                                     <div class="col-md-12">
-                                        <button class="btn btn-secondary" (click)=changePage(false) [disabled]='!dataPage.hasPrevious'>Prev</button>
+                                        <button class="btn btn-info" (click)=changePage(false) [disabled]='!dataPage.hasPrevious'>Prev</button>
                                         <label>Pag. {{dataPage.currentPage}} of {{dataPage.totalPage}}</label>
-                                        <button class="btn btn-secondary" (click)=changePage(true) [disabled]='!dataPage.hasNext'>Next</button>
+                                        <button class="btn btn-info" (click)=changePage(true) [disabled]='!dataPage.hasNext'>Next</button>
                                         <label>[Total Rows: {{dataPage.totalCount}}]</label>
                                     </div>
                                 </div>

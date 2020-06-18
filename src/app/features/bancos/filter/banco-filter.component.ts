@@ -60,14 +60,14 @@ export class bancoFilterComponent implements OnInit {
     buscar(): void {
         var data = {};
         //var data: any = {};
-        this.fileBankServices.orderBy(data, ["Id"], true);
+        // this.fileBankServices.orderBy(data, ["Id"], true);
 
         this.enviarFiltro.emit(this.filter);
         console.log(this.currencyselect);
 
-        if(this.currencyselect != null){
-            this.fileBankServices.searchCurrency(this.currencyselect);
-        }
+        // if(this.currencyselect != null){
+        //     this.fileBankServices.searchCurrency(this.currencyselect);
+        // }
     
         // if (this.fechaInicio && this.fechaFinal)
         //     //'yyyy-MM-dd'
