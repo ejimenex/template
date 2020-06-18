@@ -4,7 +4,6 @@ import { endpoint, config } from "../../../../environments/environment";
 import { BancoDetailComponent } from './banco-detail.component';
 import { BancoListComponent } from '../list/banco-list.component';
 import { ApiService } from '../../../core/_services/api.service';
-import { BancoAnulacionComponent } from '../banco-anular/banco-anular.component';
 
 
 @Component({
