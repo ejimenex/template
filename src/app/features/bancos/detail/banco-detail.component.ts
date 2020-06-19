@@ -57,8 +57,18 @@ export class BancoDetailComponent {
   getAll() {
     this.filterService.fileDetail(this.filter).subscribe(
       (resp) => {
-        this.files = resp;
         if (resp.length == 0) this.activeModal.close();
+        this.files = resp;
+        this.files.map(res=>{
+          switch(res.status)
+          {
+            case 'D' : res.status='Disponible';
+            break;
+            case 'E' : res.status='Enviada';
+            break;
+          }
+        })
+      
       },
       (error) => {
         this.alertService.error(error.error);
