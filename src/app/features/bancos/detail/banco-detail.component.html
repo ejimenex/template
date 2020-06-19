@@ -16,6 +16,7 @@
                         <th>Registros</th>
                         <th>Monto</th>
                         <th>Comentario</th>
+                        <th>Estatus</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +29,7 @@
                             {{item.totalAmount | currency}}
                         </td>
                         <td>{{item.commentary}}</td>
+                        <td>{{item.status}}</td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" a1ria-expanded="false">
@@ -37,7 +39,7 @@
                                     <a class="dropdown-item m--font-primary" [attr.href]="dowloand+item.id" target="_blank">
                                         <i class="fa fa-download"></i> Descargar
                                     </a>
-                                    <a *ngIf="item.quantity != 0" class="dropdown-item m--font-primary" href="#" (click)="anular(item)">
+                                    <a *ngIf="item.quantity != 0 && item.status=='Disponible'" class="dropdown-item m--font-primary" href="#" (click)="cancel(item.id)">
                                         <i class="fa fa-times" aria-hidden="true"></i> Anular
                                     </a>
                                 </div>
@@ -50,5 +52,5 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Cerrar</button>
 </div>

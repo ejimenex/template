@@ -1,7 +1,7 @@
 import { Component, Host, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { endpoint, config } from "../../../../environments/environment";
-import { DepositoAnulacionComponent } from "../deposito-anular.component";
+import { CancelDetailComponent } from "../cancel-file/cancel-detail.component";
 import { DepositoCommentComponent } from "../deposito-comment.component";
 import { DetailBankFileComponent } from "../list/detailBankFile.component";
 import { ApiService } from "../../../core/_services/api.service";
@@ -46,11 +46,11 @@ export class DetailThumbnailComponent implements OnInit {
 
     }
 
-    anularDeposito() {
+    cancelFile() {
 
         this.apiService.get(endpoint.motivoAnulacion, {}).subscribe((response) => {
 
-            var modal = this.modalService.open(DepositoAnulacionComponent, config.modalConfig);
+            var modal = this.modalService.open(CancelDetailComponent, config.modalConfig);
             modal.componentInstance.deposito = this.deposito;
             modal.componentInstance.motivos = response.data;
          

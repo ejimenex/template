@@ -77,11 +77,9 @@ export class BankAddComponent{
     formData.append("company", this.bankFile.companyId);
     formData.append("currency", this.bankFile.currencyId);
     formData.append("bank", this.bankFile.bankId);
-    formData.append("commentary", this.bankFile.commentary);
+    formData.append("commentary", this.bankFile.commentary=!this.bankFile.commentary?'':this.bankFile.commentary);
     var file = $("#file")[0];
     formData.append("archivo", this.file.files[0]);
-
-    this.jwt(formData);
     this.bankFileService.uploadFile(formData)
     .subscribe(
       (r) => {
@@ -101,15 +99,5 @@ export class BankAddComponent{
       }
     );
   }
-
-  private jwt(formData: FormData) {
-    // create authorization header with jwt token
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (currentUser && currentUser.accessToken) {
-      formData.append("Authorization", "Bearer " + currentUser.accessToken);
-      formData.append("ApplicationUser", currentUser.userName);
-    }
-
-    //return formData;
-  }
+  
 }

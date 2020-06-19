@@ -191,24 +191,20 @@
                                                         </button>
                                                     <div class="dropdown-menu">
                                                         <a class="dropdown-item m--font-primary" href="#" (click)="viewDetail(item)">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i> Ver Detalles
+                                                            <i class="fa fa-eye" aria-hidden="true"></i> Ver Actualizaciones
                                                         </a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
-
-                                        <!-- <ng-container *ngFor="let item of files">
-                                            <tr app-banco-thumbnail [banco]="files"></tr>
-                                        </ng-container> -->
                                     </tbody>
                                 </table>
                                 <div class="col-xs-12 col-12 d-sm-down-none">
-                                    <div class="col-md-12">
-                                        <button class="btn btn-info" (click)=changePage(false) [disabled]='!dataPage.hasPrevious'>Prev</button>
-                                        <label>Pag. {{dataPage.currentPage}} of {{dataPage.totalPage}}</label>
-                                        <button class="btn btn-info" (click)=changePage(true) [disabled]='!dataPage.hasNext'>Next</button>
-                                        <label>[Total Rows: {{dataPage.totalCount}}]</label>
+                                    <div class="col-md-12 text-center">
+                                        <button class="btn btn-info col-1" (click)=changePage(false) [disabled]='!dataPage.hasPrevious'>Prev </button>
+                                        <label class="col-2"> Pag. {{dataPage.currentPage}} de {{dataPage.totalPage}} </label>
+                                        <button  class="btn btn-info col-1" (click)=changePage(true) [disabled]='!dataPage.hasNext'> Next </button>
+                                        <label class="col-2"> [Total Rows: {{dataPage.totalCount}}] </label>
                                     </div>
                                 </div>
                             </div>

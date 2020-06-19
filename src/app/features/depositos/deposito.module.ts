@@ -6,7 +6,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AuthGuard } from "../../core/auth/_guards";
-import { DepositoAnulacionComponent } from "./deposito-anular.component";
+import {  CancelDetailComponent } from "./cancel-file/cancel-detail.component";
 import { DepositoCommentComponent } from "./deposito-comment.component";
 import { DepositoFilterComponent } from "./filter/deposito-filter.component";
 import { DetailThumbnailComponent } from "./detail/detail.thumbnail.component";
@@ -43,10 +43,10 @@ const routes: Routes = [
         RouterModule,
     ], declarations: [
         DetailBankFileComponent, DetailThumbnailComponent, DepositoFilterComponent, DepositoCommentComponent,
-        DepositoAnulacionComponent, DepositoDetailAnulacionComponent
+        CancelDetailComponent, DepositoDetailAnulacionComponent
     ],
      providers: [BankFilesDetailService,BankService,CurrencyService,CompanyService],
-    entryComponents: [DepositoCommentComponent,  DepositoAnulacionComponent, DepositoDetailAnulacionComponent]
+    entryComponents: [DepositoCommentComponent,  CancelDetailComponent, DepositoDetailAnulacionComponent]
 })
 export class DepositoModule {
 }

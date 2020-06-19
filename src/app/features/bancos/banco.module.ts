@@ -10,50 +10,66 @@ import { DefaultComponent } from "../../core/theme/pages/default/default.compone
 import { ApiService } from "../../core/_services/api.service";
 import { LayoutModule } from "../../core/theme/layouts/layout.module";
 import { AuthGuard } from "../../core/auth/_guards/auth.guard";
-import { SharedModule } from '../../shared/shared.module';
-import { BancoAnulacionComponent } from './banco-anular/banco-anular.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BankAddComponent } from './add/bank-add.component';
-import {BankService} from '../../core/_services/bank.service';
-import {CurrencyService} from '../../core/_services/currency.service';
-import {CompanyService} from '../../core/_services/company.service';
+import { SharedModule } from "../../shared/shared.module";
+import { CancelFileComponent } from "./file-cancel/file-cancel.component";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { BankAddComponent } from "./add/bank-add.component";
+import { BankService } from "../../core/_services/bank.service";
+import { CurrencyService } from "../../core/_services/currency.service";
+import { CompanyService } from "../../core/_services/company.service";
 
-import {FilebankService} from '../../core/_services/filebank.service';
-import { FileService } from '../../core/_services/file.service';
-import { BankFilesService } from '../../core/_services/bankFiles.service';
+import { FilebankService } from "../../core/_services/filebank.service";
+import { FileService } from "../../core/_services/file.service";
+import { BankFilesService } from "../../core/_services/bankFiles.service";
+import { CancelationReasonService } from "../../core/_services/cancellationReason.service";
 
 const routes: Routes = [
-    {
-        "path": "",
-        "canActivate": [AuthGuard],
-        "component": DefaultComponent,
-        "children": [
-            {
-                "path": "",
-                "component": BancoListComponent,
-            },
-        ],
-    },
+  {
+    path: "",
+    canActivate: [AuthGuard],
+    component: DefaultComponent,
+    children: [
+      {
+        path: "",
+        component: BancoListComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
-    imports: [
-        CommonModule,
-         RouterModule.forChild(routes),
-          NgbModule, 
-          FormsModule, 
-          LayoutModule,
-        SharedModule,
-         ReactiveFormsModule
-    ], exports: [
-        RouterModule,
-    ], declarations: [
-        BancoListComponent, BankAddComponent, BancoThumbnailComponent, bancoFilterComponent, BancoDetailComponent, BancoAnulacionComponent
-    ],
-    entryComponents: [ BancoDetailComponent, BancoAnulacionComponent,BankAddComponent],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    NgbModule,
+    FormsModule,
+    LayoutModule,
+    SharedModule,
+    ReactiveFormsModule,
+  ],
+  exports: [RouterModule],
+  declarations: [
+    BancoListComponent,
+    BankAddComponent,
+    BancoThumbnailComponent,
+    bancoFilterComponent,
+    BancoDetailComponent,
+    CancelFileComponent,
+  ],
+  entryComponents: [
+    BancoDetailComponent,
+    CancelFileComponent,
+    BankAddComponent,
+  ],
 
-    providers: [BankService,CurrencyService,CompanyService,FileService,FilebankService,BankFilesService]
-
+  providers: [
+    BankService,
+    CurrencyService,
+    CompanyService,
+    FileService,
+    FilebankService,
+    BankFilesService,
+    CancelationReasonService,
+  ],
 })
-export class BancoModule {
-}
+export class BancoModule {}
