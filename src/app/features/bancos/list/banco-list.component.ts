@@ -80,8 +80,8 @@ export class BancoListComponent implements OnInit {
     getAll(resetPage:boolean) {
 
         
-             if(!this.filter.currencyId) this.filter.currencyId=''
-             if(!this.filter.bankId) this.filter.bankId=''
+             if(!this.filter.currencyId) this.filter.currencyId='0'
+             if(!this.filter.bankId) this.filter.bankId='0'
              if(!this.filter.startDate) this.filter.startDate=''
              this.filter.endDate=!this.filter.endDate?'':this.filter.endDate;
              if(resetPage) this.page=1
