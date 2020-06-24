@@ -18,6 +18,7 @@ export class CompanyAddComponent {
   company: company = new company();
   id: any;
   title = "";
+  //rncMask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
 
@@ -60,8 +61,38 @@ export class CompanyAddComponent {
     );
   }
   validate(){
+
     return (!this.company.documentNumber || !this.company.name || !this.company.code)
   }
+
+  inputValidator(event: any) {
+   
+    const pattern = /^[0-9]*$/;  
+
+   if (!pattern.test(event.target.value)) {
+      event.target.value = event.target.value.replace(/[^0-9]/g, "");
+      
+    }
+  }
+
+// validateRNC(rnc: any){
+//   let sum: number;
+//   let divid: number;
+//   let i: any;
+
+//   if(rnc != 9){
+
+//     return false;
+
+//   } 
+//   else
+//   {
+    
+//   }
+
+// }
+
+
   edit() {
     this.alertService.question(() => {
       this.companyService.put(this.company).subscribe(

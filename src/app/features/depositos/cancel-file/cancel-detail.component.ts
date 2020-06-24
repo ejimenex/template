@@ -1,16 +1,16 @@
 
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { endpoint } from "../../../environments/environment";
-import { ApiService } from "../../core/_services/api.service";
-import { AlertService } from "../../core/_services/alert.service";
+import { endpoint } from "../../../../environments/environment";
+import { ApiService } from "../../../core/_services/api.service";
+import { AlertService } from "../../../core/_services/alert.service";
 
 
 @Component({
-    selector: 'app-deposito-anulacion',
-    templateUrl: './deposito-anular.component.html'
+    selector: 'app-cancel-file',
+    templateUrl: './cancel-detail.component.html'
 })
-export class DepositoAnulacionComponent {
+export class CancelDetailComponent {
 
     deposito: any;
     motivo: any;
