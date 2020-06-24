@@ -66,11 +66,10 @@ export class BankAddComponent{
      this.bankService.getAll().subscribe(bank=> this.banks=bank);
         this.companyService.getAll().subscribe(com=>this.companies=com);
            this.currencyService.getAll().subscribe(currency=>this.currencys=currency); 
+      
       let dataUser = JSON.parse(localStorage.getItem('currentUser'));
-      let user = dataUser.userName;
-         console.info(dataUser);
-         console.info(user);   
-this.bankFile.createdBy = user;
+      let user = dataUser.userName;  
+      this.bankFile.createdBy = user;
           
   }
   
