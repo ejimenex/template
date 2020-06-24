@@ -37,20 +37,17 @@
                                     </a>
                                 </li>
                                 <li class="m-portlet__nav-item">
-                                    <a href="#" m-portlet-tool="reload" (click)="getAll()"
-                                        class="m-portlet__nav-link m-portlet__nav-link--icon">
+                                    <a href="#" m-portlet-tool="reload" (click)="getAll()" class="m-portlet__nav-link m-portlet__nav-link--icon">
                                         <i class="la la-refresh"></i>
                                     </a>
                                 </li>
                                 <li class="m-portlet__nav-item">
-                                    <a href="#" m-portlet-tool="toggle"
-                                        class="m-portlet__nav-link m-portlet__nav-link--icon">
+                                    <a href="#" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon">
                                         <i class="la la-angle-down"></i>
                                     </a>
                                 </li>
                                 <li class="m-portlet__nav-item">
-                                    <a href="#" m-portlet-tool="fullscreen"
-                                        class="m-portlet__nav-link m-portlet__nav-link--icon">
+                                    <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon">
                                         <i class="la la-expand"></i>
                                     </a>
                                 </li>
@@ -84,13 +81,11 @@
                                         <tr *ngFor="let item of companies">
                                             <td>{{item.name}}</td>
                                             <td>{{item.code}}</td>
-                                            <td>{{item.documentNumber}}</td>
+                                            <td>{{item.documentNumber }}</td>
                                             <td>
-                                                <button  ngbTooltip="Eliminar el registro" style="margin-right: 3px;" (click)=confirmDelete(item.id)
-                                                    class="btn btn-outline-danger btn-pill"><i class="fa fa-trash"></i>
+                                                <button ngbTooltip="Eliminar el registro" style="margin-right: 3px;" (click)=confirmDelete(item.id) class="btn btn-outline-danger btn-pill"><i class="fa fa-trash"></i>
                                                 </button>
-                                                <button ngbTooltip="Editar el registro" (click)=editOrAddCompany(item.id)
-                                                    class="btn btn-outline-primary btn-pill"><i class="fa fa-edit"></i>
+                                                <button ngbTooltip="Editar el registro" (click)=editOrAddCompany(item.id) class="btn btn-outline-primary btn-pill"><i class="fa fa-edit"></i>
                                                 </button>
                                             </td>
                                         </tr>

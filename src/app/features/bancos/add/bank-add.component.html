@@ -40,11 +40,10 @@
         <div class="form-group m-form__group">
             <label for="comentario">
                 Archivo: 
-            </label>  <span class="text-danger" *ngIf='!file'> <b> * </b></span> 
-            
-            <input class="form-control m-input" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="file" type="file" name="documents" [(ngModel)]="file" rows="3"
-                (change)="onFileChange($event)" />
-                <label class="text-info text-right">(Solo se podran subir archivos en formato excel de 2010 en adelante)</label>
+            </label> <span class="text-danger" *ngIf='!file'> <b> * </b></span>
+
+            <input class="form-control m-input" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="file" type="file" name="documents" [(ngModel)]="file" rows="3" (change)="onFileChange($event)" />
+            <label class="text-info text-right">(Solo se podran subir archivos en formato excel de 2010 en adelante)</label>
         </div>
         <div class="form-group m-form__group">
             <label for="comentario">

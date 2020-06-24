@@ -99,7 +99,7 @@
                                 <a href="#" class="btn btn-primary" (click)="getAll(true)">
                     Buscar
                 </a>
-                                <button type="button" (click)='filter={}' class="btn btn-secondary">
+                                <button type="button" (click)='filter={};getAll(true)' class="btn btn-secondary">
                     Cancelar
                 </button>
                             </div>
@@ -121,7 +121,7 @@
                             <ul class="m-portlet__nav">
                                 <li class="m-portlet__nav-item">
                                     <a class="btn btn-default" href="" (click)="agregarBanco()">
-                                        <span class="fa fa-upload"></span> Subir
+                                        <span class="fa fa-upload"></span> Importar
                                     </a>
 
                                 </li>
@@ -151,7 +151,7 @@
                                 <table class="table table-striped m-table">
                                     <thead>
                                         <tr>
-<th>Empresa</th>
+                                            <th>Empresa</th>
                                             <th>
                                                 Fecha
                                             </th>
@@ -204,7 +204,7 @@
                                     <div class="col-md-12 text-center">
                                         <button class="btn btn-info col-1" (click)=changePage(false) [disabled]='!dataPage.hasPrevious'>Prev </button>
                                         <label class="col-2"> Pag. {{dataPage.currentPage}} de {{dataPage.totalPage}} </label>
-                                        <button  class="btn btn-info col-1" (click)=changePage(true) [disabled]='!dataPage.hasNext'> Next </button>
+                                        <button class="btn btn-info col-1" (click)=changePage(true) [disabled]='!dataPage.hasNext'> Next </button>
                                         <label class="col-2"> [Total Rows: {{dataPage.totalCount}}] </label>
                                     </div>
                                 </div>

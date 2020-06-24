@@ -9,6 +9,7 @@ import { CompanyService } from "../../../core/_services/company.service";
 import { company } from "../../../core/_models/company.model";
 import { AlertService } from "../../../core/_services/alert.service";
 
+
 @Component({
   selector: "company-List",
   templateUrl: "./company.list.component.html",
