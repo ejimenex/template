@@ -85,7 +85,6 @@ export class BankAddComponent{
       this.loading.hide()
       return;
     }
-debugger
     formData.append("company", this.bankFile.companyId);
     formData.append("currency", this.bankFile.currencyId);
     formData.append("bank", this.bankFile.bankId);
