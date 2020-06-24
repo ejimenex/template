@@ -14,6 +14,7 @@ import { CurrencyService } from "../../../core/_services/currency.service";
 import { BankService } from "../../../core/_services/bank.service";
 import { AlertService } from "../../../core/_services/alert.service";
 import { BancoDetailComponent } from "../detail/banco-detail.component";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: "app-banco-List",
@@ -34,8 +35,8 @@ export class BancoListComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private alertService: AlertService,
-
+    private alertService: AlertService,    
+    private loading:NgxSpinnerService,
     public currencyService: CurrencyService,
     public bankService: BankService,
     private filterService: FilebankService
@@ -75,14 +76,17 @@ export class BancoListComponent implements OnInit {
     if (!this.filter.bankId) this.filter.bankId = "0";
     if (!this.filter.startDate) this.filter.startDate = "";
     this.filter.endDate = !this.filter.endDate ? "" : this.filter.endDate;
+    this.loading.show();
     if (resetPage) this.page = 1;
     this.filterService.getPaged(this.filter, this.page).subscribe(
       (response) => {
         this.files = response.data;
         this.dataPage = response;
+        this.loading.hide();
       },
       (error) => {
         this.alertService.error(error.error);
+        this.loading.hide();
       }
     );
   }
