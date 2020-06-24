@@ -40,11 +40,13 @@ export class BancoListComponent implements OnInit {
     public currencyService: CurrencyService,
     public bankService: BankService,
     private filterService: FilebankService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.getAll(false);
     this.onLoad();
+  
   }
 
   agregarBanco() {
@@ -53,7 +55,7 @@ export class BancoListComponent implements OnInit {
     modal.componentInstance.notifyParent.subscribe((result) => {
       this.getAll(false);
     });
-  }
+   }
 
   onLoad() {
     this.currencyService.getAll().subscribe((curr) => (this.currency = curr));
@@ -70,6 +72,8 @@ export class BancoListComponent implements OnInit {
         this.getAll(false);
       });
   }
+
+  
 
   getAll(resetPage: boolean) {
     if (!this.filter.currencyId) this.filter.currencyId = "0";

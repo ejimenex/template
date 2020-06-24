@@ -99,7 +99,7 @@
                                 <a href="#" class="btn btn-primary" (click)="getAll(true)">
                     Buscar
                 </a>
-                                <button type="button" (click)='filter={}' class="btn btn-secondary">
+                                <button type="button" (click)='filter={};getAll(true)' class="btn btn-secondary">
                     Cancelar
                 </button>
                             </div>
@@ -151,7 +151,7 @@
                                 <table class="table table-striped m-table">
                                     <thead>
                                         <tr>
-<th>Empresa</th>
+                                            <th>Empresa</th>
                                             <th>
                                                 Fecha
                                             </th>

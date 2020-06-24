@@ -9,7 +9,7 @@ export class file extends BaseModel
    bankID : number
    bankName : string
    companyId : number
-   companyName : string
+   company : string
    totalAmount : DecimalPipe
    quantity : number
    status: string

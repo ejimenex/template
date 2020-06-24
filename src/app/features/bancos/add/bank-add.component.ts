@@ -42,10 +42,14 @@ export class BankAddComponent{
     public bankService: BankService,
     public companyService: CompanyService,
     public bankFileService: BankFilesService
-  ) {}
+  ) {
+
+
+  }
   ngOnInit() {
     this.onLoad();
   }
+
   onFileChange(event: any) {
     let fi = event.srcElement;
     if (fi.files && fi.files[0]) {
@@ -53,19 +57,28 @@ export class BankAddComponent{
 
       this.file = fi;
       let formData: FormData = new FormData();
+
+    
     }
   }
 
    onLoad() {
      this.bankService.getAll().subscribe(bank=> this.banks=bank);
         this.companyService.getAll().subscribe(com=>this.companies=com);
-           this.currencyService.getAll().subscribe(currency=>this.currencys=currency);
-           
+           this.currencyService.getAll().subscribe(currency=>this.currencys=currency); 
+      let dataUser = JSON.parse(localStorage.getItem('currentUser'));
+      let user = dataUser.userName;
+         console.info(dataUser);
+         console.info(user);   
+this.bankFile.createdBy = user;
+          
   }
+  
+
   enviarArchivo() {
     this.inProgress = true;
     this.loading.show()
-    let formData: FormData = new FormData();
+    let formData: FormData = new FormData(); 
 
     if (!this.file) {
       swal("El archivo es obligatorio.", "", "error");
@@ -73,10 +86,11 @@ export class BankAddComponent{
       this.loading.hide()
       return;
     }
-
+debugger
     formData.append("company", this.bankFile.companyId);
     formData.append("currency", this.bankFile.currencyId);
     formData.append("bank", this.bankFile.bankId);
+    formData.append("user", this.bankFile.createdBy);
     formData.append("commentary", this.bankFile.commentary=!this.bankFile.commentary?'':this.bankFile.commentary);
     var file = $("#file")[0];
     formData.append("archivo", this.file.files[0]);
@@ -90,9 +104,10 @@ export class BankAddComponent{
       },
       (err) => {
         console.log(err);
+         this.activeModal.close();
         this.file=undefined
         this.loading.hide();
-        swal(err.error, "", "error");
+        swal(err.error, "", "info");
         this.inProgress = false;
         Helpers.setLoading(false);
         return;

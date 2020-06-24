@@ -15,14 +15,12 @@
             <ul class="m-portlet__nav">
 
                 <li class="m-portlet__nav-item">
-                    <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon" title=""
-                        data-original-title="Fullscreen">
+                    <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon" title="" data-original-title="Fullscreen">
                         <i class="la la-expand"></i>
                     </a>
                 </li>
                 <li class="m-portlet__nav-item">
-                    <a href="" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon" title=""
-                        data-original-title="Collapse">
+                    <a href="" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon" title="" data-original-title="Collapse">
                         <i class="la la-angle-down"></i>
                     </a>
                 </li>
@@ -41,8 +39,7 @@
                     Banco
                 </label>
                 <div class="col-3">
-                    <select class="form-control  m-input" name="bank" [(ngModel)]="filter.bankId"
-                        >
+                    <select class="form-control  m-input" name="bank" [(ngModel)]="filter.bankId">
                         <option [value]='0' selected>--Todos--</option>
                         <option   *ngFor="let item of bank" [ngValue]="item.id">
                             {{item.name}}
@@ -53,8 +50,7 @@
                     Moneda
                 </label>
                 <div class="col-3">
-                    <select class="form-control  m-input" name="currecny" [(ngModel)]="filter.currencyId"
-                       >
+                    <select class="form-control  m-input" name="currecny" [(ngModel)]="filter.currencyId">
                         <option [value]='0' selected>--Todos--</option>
                         <option *ngFor="let item of currency" [ngValue]="item.id">
                             {{item.name}}
@@ -65,8 +61,7 @@
                     Empresa
                 </label>
                 <div class="col-3">
-                    <select class="form-control  m-input" name="company" [(ngModel)]="filter.companyId"
-                        >
+                    <select class="form-control  m-input" name="company" [(ngModel)]="filter.companyId">
                         <option [value]='0' selected>--Todos--</option>
                         <option *ngFor="let item of company" [ngValue]="item.id">
                             {{item.name}}
@@ -81,15 +76,13 @@
                     Fecha Inicio:
                 </label>
                 <div class="col-3">
-                    <input type="date" name="fechaInicio" class="form-control" [(ngModel)]="filter.startDate"
-                       />
+                    <input type="date" name="fechaInicio" class="form-control" [(ngModel)]="filter.startDate" />
                 </div>
                 <label for="example-text-input" class="col-1 col-form-label">
                     Fecha Final:
                 </label>
                 <div class="col-3">
-                    <input name="endDate"  type="date" class="form-control" [(ngModel)]="filter.endDate"
-                       />
+                    <input name="endDate" type="date" class="form-control" [(ngModel)]="filter.endDate" />
                 </div>
                 <label for="example-text-input" class="col-1 col-form-label">
                     Estatus
@@ -110,15 +103,13 @@
                     No Archivo
                 </label>
                 <div class="col-3">
-                    <input name="noRegister" (keyup.enter)='find()' type="text" class="form-control" [(ngModel)]="filter.idHeader"
-                    />
+                    <input name="noRegister" (keyup.enter)='find()' type="text" class="form-control" [(ngModel)]="filter.idHeader" />
                 </div>
                 <label for="example-text-input" class="col-1 col-form-label">
                     No Secuencia
                 </label>
                 <div class="col-3">
-                    <input name="noSecuencoa" (keyup.enter)='find()' type="text" class="form-control" [(ngModel)]="filter.idDetail"
-                    />
+                    <input name="noSecuencoa" (keyup.enter)='find()' type="text" class="form-control" [(ngModel)]="filter.idDetail" />
                 </div>
             </div>
         </div>
