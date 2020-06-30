@@ -1,0 +1,77 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Close click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form enctype="multipart/form-data">
+        <div class="form-group m-form__group">
+            <label for="banco">
+                Nombre
+            </label> <span class="text-danger" *ngIf='!role.Name'> * </span>
+            <input type="text" class="form-control  m-input" name="name" [(ngModel)]="role.Name" />
+        </div>
+        <div class="form-group m-form__group">
+            <label for="banco">
+                Descripcion
+            </label> <span class="text-danger" *ngIf='!role.Description'> * </span>
+            <input type="text" class="form-control  m-input" name="description" [(ngModel)]="role.Description" />
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="cancel" [(ngModel)]="role.Cancel" checked>
+            <label class="form-check-label" for="cancel">
+             Anular
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="ver" [(ngModel)]="role.See" checked>
+            <label class="form-check-label" for="ver">
+             Ver
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="descarga" [(ngModel)]="role.Download" checked>
+            <label class="form-check-label" for="descarga">
+             Descargar
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="export" [(ngModel)]="role.Export" checked>
+            <label class="form-check-label" for="export">
+             Exportar 
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="parameter" [(ngModel)]="role.Parameter" checked>
+            <label class="form-check-label" for="parameter">
+             Modal de Parametro 
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="upload" [(ngModel)]="role.Upload" checked>
+            <label class="form-check-label" for="upload">
+             Subir 
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="import" [(ngModel)]="role.ImpotBankFile" checked>
+            <label class="form-check-label" for="import">
+             Modal de Importacion  
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="detail" [(ngModel)]="role.DetailBankFile" checked>
+            <label class="form-check-label" for="detail">
+             Modal de Detalle 
+            </label>
+        </div>
+    </form>
+
+</div>
+<div class=" modal-footer ">
+    <button type="button " class="btn btn-outline-dark " (click)="activeModal.close( ' Close click ') ">Cerrar</button>
+    <button type="button " class="btn btn-primary " (click)="save() ">
+        Guardar
+    </button>
+</div>
