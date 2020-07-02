@@ -31,7 +31,10 @@ const routes: Routes = [
                loadChildren: ".\/features\/company\/company.module#CompanyModule"
                 //loadChildren: () => import('.\/features\/company\/company.module').then(m => m.CompanyModule)
             },
-            
+            {
+                path: "role",
+                loadChildren: ".\/features\/Role\/role.module#RoleModule"
+            },  
             {
                 path: "",
                 redirectTo: "index",
