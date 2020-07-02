@@ -20,5 +20,6 @@ export class file extends BaseModel
    total:number
    lastUpdate:Date
    totalUpdate:number
+   
 
 }

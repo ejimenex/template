@@ -35,6 +35,7 @@ export const endpoint: any = {
   bankFiles: config.apiArchivo + "bankFile",  
   cancellationReason: config.apiArchivo + "cancellationReason",
   roleUrl: config.apiArchivo + "role",
+  listExport: config.apiArchivo + "ListExportFile",
 
 
   authenticationUrl: config.authentication + "authentication/token",

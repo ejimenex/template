@@ -26,11 +26,7 @@ export function token() {
     return currentUser.accessToken;
 }
 
-const maskConfigFunction: () => Partial<IConfig> = () => {
-    return {
-      validation: false,
-    };
-  };
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -40,7 +36,6 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         BrowserAnimationsModule,
         AppRoutingModule,
         NgxSpinnerModule,
-        NgxMaskModule.forRoot(maskConfigFunction),
         ThemeRoutingModule,
         AuthModule,
         JwtModule.forRoot({

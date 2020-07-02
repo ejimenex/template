@@ -32,6 +32,10 @@ const routes: Routes = [
                 //loadChildren: () => import('.\/features\/company\/company.module').then(m => m.CompanyModule)
             },
             {
+                path:"export",
+                loadChildren: ".\/features\/exportBanco\/export.module#ExportModule"
+            },
+            {
                 path: "role",
                 loadChildren: ".\/features\/Role\/role.module#RoleModule"
             },  
