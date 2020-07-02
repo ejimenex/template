@@ -56,7 +56,7 @@
                                             Buscar Por Banco:
                                         </label>
                                 <div class="col-5">
-                                    <select class="form-control  m-input" name="bankselect" [(ngModel)]="filter.idBank">
+                                    <select class="form-control  m-input" name="bankselect" [(ngModel)]="filter.id_Bank">
                                  <option *ngFor="let item of bank" [ngValue]="item.id">
                                    {{item.name}}
                                 </option>
@@ -67,7 +67,7 @@
                                     Moneda:
                                  </label>
                                 <div class="col-5">
-                                    <select class="form-control  m-input" name="currencyselect" [(ngModel)]="filter.idCurrency">
+                                    <select class="form-control  m-input" name="currencyselect" [(ngModel)]="filter.id_Currency">
                                      <option selected [value]="0">
                                      --TODOS--
                                      </option>
@@ -81,7 +81,7 @@
                                     Nombre del Archivo Exportado:
                                 </label>
                                 <div class="col-5">
-                                    <input name="noRegister" (keyup.enter)='getAll(true)' type="text" class="form-control" [(ngModel)]="filter.nameBankFile" />
+                                    <input name="noRegister" (keyup.enter)='getAll(true)' type="text" class="form-control" [(ngModel)]="filter.name_BankFile" />
                                 </div>
 
                             </div>

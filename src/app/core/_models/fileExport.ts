@@ -7,9 +7,9 @@ export interface fileExport {
     company      : string; 
     id_BankFile   : number;
     name_BankFile : string;
-    idBank       : number;
+    id_Bank       : number;
     bank         : string; 
-    idCurrency   : number;
+    id_Currency   : number;
     currency     : string;
     createdDate  : Date;
     dateExport   : Date;

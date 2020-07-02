@@ -15,6 +15,6 @@ export class FileExportService extends BaseService<fileExport, number> {
   }
 
   getPaged(filter:any,page:number){
-    return this._httpClient.get<any>(endpoint.listExport+`?PageNumber=${page}&pageSize=10&bankId=${filter.idBank}&currencyId=${filter.idCurrency}&nameFile=${filter.nameBankFile}&dateExport=${filter.dataExport}&createDate=${filter.createdDate}`);
+    return this._httpClient.get<any>(endpoint.listExport+`?PageNumber=${page}&pageSize=10&Id_Bank=${filter.id_Bank}&Id_Currency=${filter.id_Currency}&Name_BankFile=${filter.name_BankFile}&dateExport=${filter.dataExport}&createDate=${filter.createdDate}`);
   }
 }

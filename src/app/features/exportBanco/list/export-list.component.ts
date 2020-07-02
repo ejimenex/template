@@ -53,9 +53,10 @@ export class ExportListComponent implements OnInit {
   }
 
   getAll(resetPage: boolean) {
-    if (!this.filter.currencyId) this.filter.idCurrency = "0";
-    if (!this.filter.bankId) this.filter.idBank = "0";
-    if (!this.filter.nameBankFile)this.filter.nameBankFile = "";
+    if (!this.filter.id_Currency) this.filter.id_Currency = "0";
+    if (!this.filter.id_Bank) this.filter.id_Bank = "0";
+    if (!this.filter.name_BankFile)this.filter.name_BankFile = "";
+    
     if (!this.filter.dataExport) this.filter.dataExport = "";
     this.filter.createdDate = !this.filter.createdDate ? "" : this.filter.createdDate;
     this.loading.show();
