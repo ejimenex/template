@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RoleAddComponent } from './add/role-add.component';
+import { RoleListComponent } from './list/role-list.component';
 import { DefaultComponent } from '../../core/theme/pages/default/default.component';
 
 
@@ -11,7 +12,7 @@ const routes: Routes = [
       children: [
           {
               path: "",
-              component: RoleAddComponent,
+              component: RoleListComponent,
           },
       ],
     }

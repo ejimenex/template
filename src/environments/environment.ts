@@ -34,10 +34,10 @@ export const endpoint: any = {
   listFile: config.apiArchivo + "ListFile",
   bankFiles: config.apiArchivo + "bankFile",  
   cancellationReason: config.apiArchivo + "cancellationReason",
-  roleUrl: config.apiArchivo + "role",
+  roleUrl: config.authentication+ "Account/Roles",
+  permissionUrl: config.authentication+ "Account/Permission",
   listExport: config.apiArchivo + "ListExportFile",
-
-
+    
   authenticationUrl: config.authentication + "authentication/token",
   usuariosUrl: config.apiUrl + "sistemas/empleados",
   

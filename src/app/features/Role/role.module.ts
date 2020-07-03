@@ -7,6 +7,7 @@ import { AuthGuard } from "../../core/auth/_guards/auth.guard";
 import { SharedModule } from "../../shared/shared.module";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { RoleAddComponent} from './add/role-add.component';
+import { RoleListComponent} from './list/role-list.component';
 import { RoleService} from '../../core/_services/role.service';
 import { RoleRoutingModule} from './role.route';
 
@@ -22,8 +23,8 @@ import { RoleRoutingModule} from './role.route';
     ReactiveFormsModule
   ],
   exports: [RouterModule], 
-  declarations: [RoleAddComponent],
-  entryComponents: [RoleAddComponent],
+  declarations: [RoleListComponent, RoleAddComponent],
+  entryComponents: [RoleListComponent, RoleAddComponent],
   providers: [RoleService],
 })
 export class RoleModule { 

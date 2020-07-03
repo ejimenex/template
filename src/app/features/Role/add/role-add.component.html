@@ -9,63 +9,35 @@
         <div class="form-group m-form__group">
             <label for="banco">
                 Nombre
-            </label> <span class="text-danger" *ngIf='!role.Name'> * </span>
-            <input type="text" class="form-control  m-input" name="name" [(ngModel)]="role.Name" />
+            </label> <span class="text-danger" *ngIf='!roleName'> * </span>
+            <input type="text" class="form-control  m-input" id="name" name="name" [(ngModel)]="roleName" />
         </div>
         <div class="form-group m-form__group">
             <label for="banco">
                 Descripcion
-            </label> <span class="text-danger" *ngIf='!role.Description'> * </span>
-            <input type="text" class="form-control  m-input" name="description" [(ngModel)]="role.Description" />
+            </label> <span class="text-danger" *ngIf='!roleDescription'> * </span>
+            <input type="text" class="form-control  m-input" id="description" name="description" [(ngModel)]="roleDescription" />
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="cancel" [(ngModel)]="role.Cancel" checked>
-            <label class="form-check-label" for="cancel">
-             Anular
+            <input class="form-check-input" type="checkbox" name="status" id="status" [(ngModel)]="roleStatus" checked>
+            <label class="form-check-label" for="status">
+                <b>Activar usuario</b>
             </label>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="ver" [(ngModel)]="role.See" checked>
-            <label class="form-check-label" for="ver">
-             Ver
-            </label>
+        <br>
+        <h4>Permisos de role</h4>
+        <hr>
+        <div class="row">
+            <div class="col-3" *ngFor="let item of permission">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="item.value" [name]="item.name" [id]="item.name">
+                    <label class="form-check-label" [for]="item.name">
+                    {{ item.name }}
+                    </label>
+                </div>
+            </div>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="descarga" [(ngModel)]="role.Download" checked>
-            <label class="form-check-label" for="descarga">
-             Descargar
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="export" [(ngModel)]="role.Export" checked>
-            <label class="form-check-label" for="export">
-             Exportar 
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="parameter" [(ngModel)]="role.Parameter" checked>
-            <label class="form-check-label" for="parameter">
-             Modal de Parametro 
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="upload" [(ngModel)]="role.Upload" checked>
-            <label class="form-check-label" for="upload">
-             Subir 
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="import" [(ngModel)]="role.ImpotBankFile" checked>
-            <label class="form-check-label" for="import">
-             Modal de Importacion  
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="detail" [(ngModel)]="role.DetailBankFile" checked>
-            <label class="form-check-label" for="detail">
-             Modal de Detalle 
-            </label>
-        </div>
+      
     </form>
 
 </div>
