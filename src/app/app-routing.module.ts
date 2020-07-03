@@ -5,6 +5,7 @@ import { LogoutComponent } from './core/auth/logout/logout.component';
 import { AuthGuard } from './core/auth/_guards/auth.guard';
 
 
+
 const routes: Routes = [
     { path: "login", loadChildren: "./core/auth/auth.module#AuthModule" },
     { path: "logout", component: LogoutComponent },
@@ -28,8 +29,8 @@ const routes: Routes = [
             },
             {
                 path: "company",
-               loadChildren: ".\/features\/company\/company.module#CompanyModule"
-                //loadChildren: () => import('.\/features\/company\/company.module').then(m => m.CompanyModule)
+                loadChildren: ".\/features\/company\/company.module#CompanyModule",
+                canLoad: ['CanLoadTeamSection']
             },
             {
                 path:"export",
