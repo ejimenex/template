@@ -2,7 +2,7 @@
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <h3 class="m-subheader__title m-subheader__title--separator">
-                Roles de usuario
+                Usuarios
             </h3>
             <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
                 <li class="m-nav__item m-nav__item--home">
@@ -25,15 +25,15 @@
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">
                                 <h3 class="m-portlet__head-text">
-                                    Roles
+                                    Usuarios
                                 </h3>
                             </div>
                         </div>
                         <div class="m-portlet__head-tools">
                             <ul class="m-portlet__nav">
                                 <li class="m-portlet__nav-item">
-                                    <a class="btn btn-default" href="" (click)="editOrAddRole(0)">
-                                        <span class="fa fa-plus"></span> Nuevo Role
+                                    <a class="btn btn-default" href="" (click)="editOrAddUser(0)">
+                                        <span class="fa fa-plus"></span> Nuevo usuario
                                     </a>
                                 </li>
                                 <li class="m-portlet__nav-item">
@@ -63,22 +63,19 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                Id
+                                                Nombre de usuario
                                             </th>
                                             <th>
-                                                Nombre
+                                                Nombre y apellido
                                             </th>
                                             <th>
-                                                Descripción
+                                                Dirección  de correo
+                                            </th>
+                                            <th>
+                                                Rol asignado
                                             </th>
                                             <th>
                                                 Estatus
-                                            </th>
-                                            <th>
-                                                Fecha de la creación
-                                            </th>
-                                            <th>
-                                                Creado por
                                             </th>
                                             <th>
                                                 Opciones
@@ -86,15 +83,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let item of roles, let i = index">
-                                            <td>{{i + 1}}</td>
-                                            <td>{{item.name}}</td>
-                                            <td>{{item.description}}</td>
+                                        <tr *ngFor="let item of users">                                            
+                                            <td>{{item.userName}}</td>
+                                            <td>{{item.firstName}} {{ item.lastName }}</td>
+                                            <td>{{ item.email }}</td>
+                                            <td>{{ item.role }}</td>                                            
                                             <td>{{item.status ? 'Activo' : 'Inactivo'}}</td>
-                                            <td>{{item.createdAt ? dateFormat(item.createdAt, "DD/MM/YYYY") : '' }}</td>
-                                            <td>{{item.createdBy}}</td>
                                             <td>
-                                                <button ngbTooltip="Editar el registro" (click)=editOrAddRole(item) class="btn btn-outline-primary btn-pill"><i class="fa fa-edit"></i>
+                                                <button ngbTooltip="Editar el registro" (click)=editOrAddUser(item) class="btn btn-outline-primary btn-pill"><i class="fa fa-edit"></i>
                                                 </button>
                                                 <button ngbTooltip="Eliminar el registro" style="margin-right: 3px;" (click)=confirmDelete(item.id) class="btn btn-outline-danger btn-pill"><i class="fa fa-trash"></i>
                                                 </button>

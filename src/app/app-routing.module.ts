@@ -38,6 +38,10 @@ const routes: Routes = [
             {
                 path: "role",
                 loadChildren: ".\/features\/Role\/role.module#RoleModule"
+            },
+            {
+                path: "user",
+                loadChildren: ".\/features\/users\/user.module#UserModule"
             },  
             {
                 path: "",
