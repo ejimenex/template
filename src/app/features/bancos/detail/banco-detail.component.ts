@@ -6,6 +6,7 @@ import { CancelFileComponent } from "../file-cancel/file-cancel.component";
 import { FilebankService } from "../../../core/_services/filebank.service";
 import { file } from "../../../core/_models/file.model";
 import { AlertService } from "../../../core/auth/_services/alert.service";
+import { exportFile } from '../../../core/_models/exportFile';
 
 declare var swal: any;
 
@@ -17,6 +18,7 @@ export class BancoDetailComponent {
   Ids: string = null;
   depositos: any[];
   motivos: any[];
+  exportFile : any [] 
   files: file[];
   filter: any = {};
   archivoUrl: string = endpoint.fileServiceUrl; //item.documentoId
@@ -54,6 +56,40 @@ export class BancoDetailComponent {
     this.notifyParent.emit();
   }
 
+  // ExportFile(){
+  //   let dataUser = JSON.parse(localStorage.getItem('currentUser'));
+  //   let user = dataUser.userName;  
+  //   this.exportFile.UserExport = user;
+  //   let formData: FormData = new FormData(); 
+
+  //   formData.append("company", this.bankFile.companyId);
+  //   formData.append("currency", this.bankFile.currencyId);
+  //   formData.append("bank", this.bankFile.bankId);
+  //   formData.append("user", this.bankFile.createdBy);
+  //   formData.append("commentary", this.bankFile.commentary=!this.bankFile.commentary?'':this.bankFile.commentary);
+  //   var file = $("#file")[0];
+  //   formData.append("archivo", this.file.files[0]);
+  //   this.bankFileService.uploadFile(formData)
+  //   .subscribe(
+  //     (r) => {
+  //      this.activeModal.close();
+  //      this.loading.hide()
+  //       swal("Los datos se guardaron correctamente.", "", "success");
+  //       this.notifyParent.emit(r);
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //        this.activeModal.close();
+  //       this.file=undefined
+  //       this.loading.hide();
+  //       swal(err.error, "", "info");
+  //       this.inProgress = false;
+  //       Helpers.setLoading(false);
+  //       return;
+  //     }
+  //   );
+
+  // }
   getAll() {
     this.filterService.fileDetail(this.filter).subscribe(
       (resp) => {

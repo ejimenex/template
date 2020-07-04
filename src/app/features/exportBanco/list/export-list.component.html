@@ -41,8 +41,6 @@
                                         <i class="la la-angle-down"></i>
                                     </a>
                                 </li>
-
-
                             </ul>
 
 
@@ -92,13 +90,13 @@
                     Fecha Inicio:
                 </label>
                                 <div class="col-5">
-                                    <input type="date" name="fechaInicio" class="form-control" [(ngModel)]="filter.dataExport" />
+                                    <input type="date" name="fechaInicio" class="form-control" [(ngModel)]="filter.createdDate" />
                                 </div>
                                 <label for="example-text-input" class="col-1 col-form-label">
                     Fecha Final:
                 </label>
                                 <div class="col-5">
-                                    <input name="fechaFinal" type="date" class="form-control" [(ngModel)]="filter.createdDate" />
+                                    <input name="fechaFinal" type="date" class="form-control" [(ngModel)]="filter.dataExport" />
                                 </div>
                             </div>
                         </div>
@@ -150,7 +148,7 @@
                         <!--begin::Section-->
                         <div class="m-section">
                             <div class="m-section__content text-center">
-                                <table class="table table-responsive m-table">
+                                <table class="table table-responsive table-striped m-table">
                                     <thead>
                                         <tr>
                                             <th>
