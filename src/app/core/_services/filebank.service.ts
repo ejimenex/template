@@ -13,17 +13,15 @@ import { Filter } from '../_models/filter';
 export class FilebankService extends BaseService<fileBank, number> {
 
   constructor(_httpClient: HttpClient) {
-
-          super(_httpClient, endpoint.listFile)
+      super(_httpClient, endpoint.listFile)
    }
 
   getPaged(filter:any,page:number){
-    return this._httpClient.get<any>(endpoint.listFile+`?PageNumber=${page}&pageSize=10&bankId=${filter.bankId}&currencyId=${filter.currencyId}&startDate=${filter.startDate}&endDate=${filter.endDate}`);
+    return this._httpClient.get<any>(endpoint.listFile+`?PageNumber=${page}&pageSize=10&bankId=${filter.bankId}&currencyId=${filter.currencyId}&startDate=${filter.startDate}&endDate=${filter.endDate}`, 
+                                      {headers: this.jwt()});
   }
   fileDetail(filter: any){
-
-    return this._httpClient.get<any>(endpoint.bankFiles+`/${filter.bankId}/${filter.currencyId}/${filter.date}`)
-
+    return this._httpClient.get<any>(endpoint.bankFiles+`/${filter.bankId}/${filter.currencyId}/${filter.date}`, {headers: this.jwt()})
   }
 }
 

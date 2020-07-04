@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RoleAddComponent } from './add/role-add.component';
-import { RoleListComponent } from './list/role-list.component';
+import { UserListComponent } from './list/user-list.component';
 import { DefaultComponent } from '../../core/theme/pages/default/default.component';
 
 
@@ -12,7 +11,7 @@ const routes: Routes = [
       children: [
           {
               path: "",
-              component: RoleListComponent,
+              component: UserListComponent,
           },
       ],
     }
@@ -23,7 +22,7 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
   })
-  export class RoleRoutingModule {}
+  export class UserRoutingModule {}
   
 
 

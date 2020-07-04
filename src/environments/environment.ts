@@ -13,7 +13,7 @@ export const config: any = {
   apiUrl: "http://10.228.30.87:8001/api/", //"http://localhost:5000/api/",//"http://10.228.30.87:8001/api/", //"http://192.168.50.5:6001/api/",//  "http://192.168.50.5:6002/api/",
   mantenimientoUrl: "http://10.228.30.106:5600/api/",
   apiArchivo:'http://localhost:5000/api/',//'http://10.228.30.87:6500/api/',
-  authentication: "http://10.228.30.87:8001/api/",
+  authentication: "http://localhost:5000/api/",
   serverUrl: "http://10.228.30.87:8025/",
   reportUrl: "http://mardom-qa-srv01/",
   reportServerUrl: "http://mardom-sql-srv01/ReportServer",
@@ -34,10 +34,11 @@ export const endpoint: any = {
   listFile: config.apiArchivo + "ListFile",
   bankFiles: config.apiArchivo + "bankFile",  
   cancellationReason: config.apiArchivo + "cancellationReason",
-  roleUrl: config.apiArchivo + "role",
+  roleUrl: config.authentication+ "Account/Roles",
+  userUrl: config.authentication+ "Account/Users",
+  permissionUrl: config.authentication+ "Account/Permission",
   listExport: config.apiArchivo + "ListExportFile",
-
-
+    
   authenticationUrl: config.authentication + "authentication/token",
   usuariosUrl: config.apiUrl + "sistemas/empleados",
   

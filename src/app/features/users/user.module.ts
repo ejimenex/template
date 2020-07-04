@@ -6,10 +6,10 @@ import { LayoutModule } from "../../core/theme/layouts/layout.module";
 import { AuthGuard } from "../../core/auth/_guards/auth.guard";
 import { SharedModule } from "../../shared/shared.module";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { RoleAddComponent} from './add/role-add.component';
-import { RoleListComponent} from './list/role-list.component';
-import { RoleService} from '../../core/_services/role.service';
-import { RoleRoutingModule} from './role.route';
+import { UserAddComponent} from './add/user-add.component';
+import { UserListComponent} from './list/user-list.component';
+import { UserService} from '../../core/_services/user.service';
+import { UserRoutingModule} from './user.route';
 
 @NgModule({
   imports: [
@@ -18,15 +18,15 @@ import { RoleRoutingModule} from './role.route';
     FormsModule,
     LayoutModule,
     CommonModule,
-    RoleRoutingModule,
+    UserRoutingModule,
     SharedModule,
     ReactiveFormsModule
   ],
   exports: [RouterModule], 
-  declarations: [RoleListComponent, RoleAddComponent],
-  entryComponents: [RoleListComponent, RoleAddComponent],
-  providers: [RoleService],
+  declarations: [UserListComponent, UserAddComponent],
+  entryComponents: [UserListComponent, UserAddComponent],
+  providers: [UserService],
 })
-export class RoleModule { 
+export class UserModule { 
   
 }

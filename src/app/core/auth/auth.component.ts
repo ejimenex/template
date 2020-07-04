@@ -60,14 +60,15 @@ export class AuthComponent implements OnInit {
     signin() {
         this.loading = true;
         this._authService.login(this.model.email, this.model.password).subscribe(
-            data => {
+            data => {                
                 this._router.navigate([this.returnUrl]);
             },
-            err => {
-                console.log(err);
+            err => {                                
                 this.showAlert('alertSignin');
                 if (err.error.Message)
                     this._alertService.error(err.error.Message, true);
+                else if(err.error)
+                    this._alertService.error(err.error, true);
                 else
                     this._alertService.error("Hubo un error de comunicación.", true);
                 this.loading = false;
