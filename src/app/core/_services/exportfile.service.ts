@@ -13,7 +13,7 @@ export class ExportfileService extends BaseService<exportFile, number> {
     super(_httpClient, endpoint.exportFile)
   }
   exportFile(data: FormData) {
-    return this._httpClient.post(endpoint.exportFile + "/exportFile", data);
+    return this._httpClient.post(endpoint.exportFile + "/dynamicsExport", data);
   }
 
 }

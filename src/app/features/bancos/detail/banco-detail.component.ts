@@ -104,7 +104,7 @@ export class BancoDetailComponent {
             break;
           }
         })
-      
+      console.log(resp);
       },
       (error) => {
         this.alertService.error(error.error);
