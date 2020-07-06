@@ -25,7 +25,7 @@
                 </h4>
                 <i class="m-menu__section-icon flaticon-more-v3"></i>
             </li>
-            <li class="m-menu__item  m-menu__item--submenu" routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true" m-menu-submenu-toggle="hover">
+            <li class="m-menu__item  m-menu__item--submenu" *ngIf="checkClaim('ImportBankFile') || checkClaim('DetailBankFile') || checkClaim('ExportBankFile')" routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="#" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon fa fa-university"></i>
                     <span class="m-menu__link-text">
@@ -43,7 +43,7 @@
 								</span>
                             </span>
                         </li>
-                        <li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                        <li *ngIf="checkClaim('ImportBankFile')" class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
                             <a routerLink="/archivosBanco" class="m-menu__link">
                                 <i class="m-menu__link-bullet m-menu__link-bullet--dot">
 									<span></span>
@@ -53,7 +53,7 @@
 								</span>
                             </a>
                         </li>
-                        <li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                        <li *ngIf="checkClaim('DetailBankFile')" class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
                             <a routerLink="/depositos" class="m-menu__link">
                                 <i class="m-menu__link-bullet m-menu__link-bullet--dot">
 									<span></span>
@@ -63,7 +63,7 @@
 								</span>
                             </a>
                         </li>
-                        <li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+                        <li *ngIf="checkClaim('ExportBankFile')" class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
                             <a routerLink="/export" class="m-menu__link">
                                 <i class="m-menu__link-bullet m-menu__link-bullet--dot">
 									<span></span>
@@ -78,7 +78,7 @@
             </li>
 
             <li class="m-menu__item  m-menu__item--submenu" routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true" m-menu-submenu-toggle="hover">
-                <a href="#" class="m-menu__link m-menu__toggle">
+                <a href="#" class="m-menu__link m-menu__toggle" *ngIf="checkClaim('Parameter')">
                     <i class="m-menu__link-icon fa fa-cog"></i>
                     <span class="m-menu__link-text">
 					   Parametros

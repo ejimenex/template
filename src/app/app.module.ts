@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -14,11 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, CanLoad, Route, UrlSegment } from "@angular/router";
 import { ThemeRoutingModule } from './core/theme/theme-routing.module';
 import { ScriptLoaderService } from './core/_services/script-loader.service';
 import { AuthModule } from './core/auth/auth.module';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { Observable } from 'rxjs';
 
 
 export function token() {
