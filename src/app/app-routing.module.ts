@@ -29,8 +29,7 @@ const routes: Routes = [
             },
             {
                 path: "company",
-                loadChildren: ".\/features\/company\/company.module#CompanyModule",
-                canLoad: ['CanLoadTeamSection']
+                loadChildren: ".\/features\/company\/company.module#CompanyModule",                
             },
             {
                 path:"export",
