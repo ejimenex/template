@@ -4,9 +4,10 @@ import { endpoint, config } from "../../../../environments/environment";
 import { ApiService } from "../../../core/_services/api.service";
 import { CancelFileComponent } from "../file-cancel/file-cancel.component";
 import { FilebankService } from "../../../core/_services/filebank.service";
-import { file } from "../../../core/_models/file.model";
+import { file } from '../../../core/_models/file.model';
 import { AlertService } from "../../../core/auth/_services/alert.service";
 import { exportFile } from '../../../core/_models/exportFile';
+import { ExportfileService} from "../../../core/_services/exportfile.service";
 
 declare var swal: any;
 
@@ -18,13 +19,16 @@ export class BancoDetailComponent {
   Ids: string = null;
   depositos: any[];
   motivos: any[];
-  exportFile : any [] 
+  exportFile : any={}; 
+  file : any ={};
   files: file[];
   filter: any = {};
   archivoUrl: string = endpoint.fileServiceUrl; //item.documentoId
   dowloand: string = endpoint.detaild
   @Output()
   notifyParent: EventEmitter<any> = new EventEmitter();
+  
+   exportfileService: ExportfileService;
 
   constructor(
     private modalService: NgbModal,
@@ -56,40 +60,34 @@ export class BancoDetailComponent {
     this.notifyParent.emit();
   }
 
-  // ExportFile(){
-  //   let dataUser = JSON.parse(localStorage.getItem('currentUser'));
-  //   let user = dataUser.userName;  
-  //   this.exportFile.UserExport = user;
-  //   let formData: FormData = new FormData(); 
+  exportFileShared(){
+    let dataUser = JSON.parse(localStorage.getItem('currentUser'));
+    let user = dataUser.userName;  
+    this.exportFile.UserExport = user;
 
-  //   formData.append("company", this.bankFile.companyId);
-  //   formData.append("currency", this.bankFile.currencyId);
-  //   formData.append("bank", this.bankFile.bankId);
-  //   formData.append("user", this.bankFile.createdBy);
-  //   formData.append("commentary", this.bankFile.commentary=!this.bankFile.commentary?'':this.bankFile.commentary);
-  //   var file = $("#file")[0];
-  //   formData.append("archivo", this.file.files[0]);
-  //   this.bankFileService.uploadFile(formData)
-  //   .subscribe(
-  //     (r) => {
-  //      this.activeModal.close();
-  //      this.loading.hide()
-  //       swal("Los datos se guardaron correctamente.", "", "success");
-  //       this.notifyParent.emit(r);
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //        this.activeModal.close();
-  //       this.file=undefined
-  //       this.loading.hide();
-  //       swal(err.error, "", "info");
-  //       this.inProgress = false;
-  //       Helpers.setLoading(false);
-  //       return;
-  //     }
-  //   );
+    let formData: FormData = new FormData(); 
 
-  // }
+    formData.append("company", this.file.companyId);
+    formData.append("currency", this.file.currencyId);
+    formData.append("bank", this.file.bankId);
+    formData.append("bankfile", this.file.Id);
+    formData.append("user", this.exportFile.UserExport);
+    this.exportfileService.exportFile(formData)
+    .subscribe(
+      (r) => {
+       this.activeModal.close();
+        swal("Archivo Exportado con Éxito", "", "success");
+        this.notifyParent.emit(r);
+      },
+      (err) => {
+        console.log(err);
+         this.activeModal.close();
+        swal(err.error, "", "info");
+        return;
+      }
+    );
+
+  }
   getAll() {
     this.filterService.fileDetail(this.filter).subscribe(
       (resp) => {

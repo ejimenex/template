@@ -34,10 +34,6 @@ const routes: Routes = [
             {
                 path:"export",
                 loadChildren: ".\/features\/exportBanco\/export.module#ExportModule"
-            },
-            {
-                path: "role",
-                loadChildren: ".\/features\/Role\/role.module#RoleModule"
             },  
             {
                 path: "",
