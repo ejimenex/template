@@ -28,13 +28,27 @@
         <h4>Permisos de role</h4>
         <hr>
         <div class="row">
-            <div class="col-3" *ngFor="let item of permission">
+            <div class="col-6">
+                <h5>Permiso</h5>
+            </div>
+            <div class="col-6">
+                <h5>Descripción</h5>
+            </div>
+        </div>
+        <br>
+        <div class="row" *ngFor="let item of permission">
+            <div class="col-6" >                
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" [(ngModel)]="item.value" [name]="item.name" [id]="item.name">
                     <label class="form-check-label" [for]="item.name">
                     {{ item.name }}
                     </label>
                 </div>
+            </div>
+            <div class="col-6">
+                <p>
+                    {{ item.description }}
+                </p>
             </div>
         </div>
       

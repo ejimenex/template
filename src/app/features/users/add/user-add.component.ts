@@ -168,7 +168,7 @@ export class UserAddComponent {
   async validateUser() {    
     await this.userService
           .validateUser(this.email)
-          .subscribe((res) => {            
+          .subscribe((res) => {                             
             this.enableForm = true;
             this.codigo = res.data[0].codigo;
             this.departamento = res.data[0].departamento;
@@ -178,6 +178,12 @@ export class UserAddComponent {
             let nombres = res.data[0].nombre.split(' ');
             this.apellido = nombres.length > 3 ? nombres[2]+' '+nombres[3] : nombres[1]+' '+nombres[2];
             this.nombre = nombres.length > 3 ? nombres[0]+' '+nombres[1] : nombres[0];
+
+            if(this.email.indexOf('@') == -1) {
+              let apellidoToEmail = nombres.length > 3 ? nombres[2] : nombres[1];
+              this.email = this.nombre.substr(0,1)+ apellidoToEmail +'@mardom.com';
+              this.email = this.email.toLowerCase();
+            }
           });        
   }
 

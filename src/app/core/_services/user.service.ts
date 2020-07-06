@@ -17,6 +17,11 @@ export class UserService extends BaseService<user, number> {
 
   validateUser(email: string) {
     let index = email.indexOf('@');
+
+    if(index == -1){
+      return this._httpClient.get<any>(`http://192.168.50.5:7001/api/sistemas/empleados?pagesize=10&pagenumber=1?&nombre=${email}`);
+    }
+
     const userName = email.substr(0, index);
     return this._httpClient.get<any>(`http://192.168.50.5:7001/api/sistemas/empleados?pagesize=10&pagenumber=1?&username=${userName}`);
   }
