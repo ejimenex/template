@@ -36,13 +36,13 @@
                                     Acciones
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item m--font-primary" [attr.href]="dowloand+item.id" target="_blank">
+                                    <a class="dropdown-item m--font-primary" *ngIf="checkClaim('Download')" [attr.href]="dowloand+item.id" target="_blank">
                                         <i class="fa fa-download"></i> Descargar
                                     </a>
-                                    <a class="dropdown-item m--font-primary" target="_blank">
+                                    <a class="dropdown-item m--font-primary" *ngIf="checkClaim('Export')" target="_blank">
                                         <i class="fa fa-paper-plane"></i> Exportar
                                     </a>
-                                    <a *ngIf="item.quantity != 0 && item.status=='Disponible'" class="dropdown-item m--font-primary" href="#" (click)="cancel(item.id)">
+                                    <a *ngIf="item.quantity != 0 && item.status=='Disponible' && checkClaim('Cancel')" class="dropdown-item m--font-primary" href="#" (click)="cancel(item.id)">
                                         <i class="fa fa-times" aria-hidden="true"></i> Anular
                                     </a>
                                 </div>
