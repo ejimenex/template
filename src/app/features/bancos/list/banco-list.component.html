@@ -120,7 +120,7 @@
                         <div class="m-portlet__head-tools">
                             <ul class="m-portlet__nav">
                                 <li class="m-portlet__nav-item">
-                                    <a class="btn btn-default" href="" (click)="agregarBanco()">
+                                    <a class="btn btn-default" *ngIf="checkClaim('Upload')" href="" (click)="agregarBanco()">
                                         <span class="fa fa-upload"></span> Importar
                                     </a>
 
@@ -191,7 +191,7 @@
                                                             Acciones
                                                         </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item m--font-primary" href="#" (click)="viewDetail(item)">
+                                                        <a class="dropdown-item m--font-primary" href="#" *ngIf="checkClaim('See')"  (click)="viewDetail(item)">
                                                             <i class="fa fa-eye" aria-hidden="true"></i> Ver Actualizaciones
                                                         </a>
                                                     </div>
