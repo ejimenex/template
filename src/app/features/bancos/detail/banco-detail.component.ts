@@ -19,7 +19,8 @@ export class BancoDetailComponent {
   Ids: string = null;
   depositos: any[];
   motivos: any[];
-  exportFile : any={}; 
+  // exportFile : any={}; 
+  bankFile:any={};
   file : any ={};
   files: file[];
   filter: any = {};
@@ -43,6 +44,7 @@ export class BancoDetailComponent {
   }
   ngOnInit() {
     this.getAll();
+    this.onLoad();
   }
   cancel(bankFile: number) {
     var modal = this.modalService.open(CancelFileComponent, config.modalConfig);
@@ -60,19 +62,13 @@ export class BancoDetailComponent {
     this.notifyParent.emit();
   }
 
-  exportFileShared(){
+  onLoad (){
     let dataUser = JSON.parse(localStorage.getItem('currentUser'));
     let user = dataUser.userName;  
-    this.exportFile.UserExport = user;
-
-    let formData: FormData = new FormData(); 
-
-    formData.append("company", this.file.companyId);
-    formData.append("currency", this.file.currencyId);
-    formData.append("bank", this.file.bankId);
-    formData.append("bankfile", this.file.Id);
-    formData.append("user", this.exportFile.UserExport);
-    this.exportfileService.exportFile(formData)
+    this.bankFile.createdBy = user;
+  }
+  exportFileShared(item){
+    this.exportfileService.exportFile(item)
     .subscribe(
       (r) => {
        this.activeModal.close();
@@ -102,7 +98,7 @@ export class BancoDetailComponent {
             break;
           }
         })
-      console.log(resp);
+       console.log(resp);
       },
       (error) => {
         this.alertService.error(error.error);

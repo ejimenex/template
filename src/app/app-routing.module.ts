@@ -34,7 +34,15 @@ const routes: Routes = [
             {
                 path:"export",
                 loadChildren: ".\/features\/exportBanco\/export.module#ExportModule"
-            },  
+            },
+            {
+                path: "role",
+                loadChildren: ".\/features\/Role\/role.module#RoleModule"
+            },
+            {
+                path: "user",
+                loadChildren: ".\/features\/users\/user.module#UserModule"
+            },
             {
                 path: "",
                 redirectTo: "index",
