@@ -75,4 +75,24 @@ export class BancoDetailComponent {
       }
     );
   }
+  checkClaim(option: string) {
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    switch(option) {
+        case 'Cancel':
+        case 'See':
+        case 'Download':
+        case 'Upload':
+        case 'Parameter':
+        case 'ImportBankFile':
+        case 'ExportBankFile':
+        case 'DetailBankFile':
+            let result = currentUser.claims.indexOf(option);
+            if(result != -1) return true;
+            else return false;
+        break;
+                                    
+        default:
+            return false;
+    }
+  }
 }

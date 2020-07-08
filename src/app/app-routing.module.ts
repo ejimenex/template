@@ -37,7 +37,7 @@ const routes: Routes = [
             },
             {
                 path: "role",
-                loadChildren: ".\/features\/Role\/role.module#RoleModule"
+                loadChildren: ".\/features\/role\/role.module#RoleModule"
             },
             {
                 path: "user",

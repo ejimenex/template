@@ -19,6 +19,8 @@ declare var swal: any;
 })
 export class UserAddComponent {
   title: string
+  showMessageNotFound: boolean;
+  userRecomendation: any[];
   user: user;
   roles: role[]
 
@@ -26,13 +28,10 @@ export class UserAddComponent {
   nombre: string
   apellido: string  
   item: any
-  enableForm: boolean;
   codigo: string;
   departamento: string;
   posicion: string;
-  oficina: string;
-  password: string = 'Mardom2020';
-  isPasswordGeneric: boolean = true;
+  oficina: string;  
   role: string = "#";
   status: Boolean;
 
@@ -73,7 +72,8 @@ export class UserAddComponent {
       }
       
     } else {
-      this.user = new user();      
+      this.user = new user();
+      this.userRecomendation = new Array();
     }
     
   }
@@ -92,9 +92,7 @@ export class UserAddComponent {
     this.user.position = this.posicion;
     this.user.role = this.role;
     this.user.phoneNumber = this.codigo;
-    this.user.status = this.status;
-    this.user.password = this.password;
-    this.user.isPasswordGeneric = this.isPasswordGeneric;    
+    this.user.status = this.status;    
 
     if(this.user.id){
       this.userService.updateUser(this.user).subscribe(
@@ -156,34 +154,25 @@ export class UserAddComponent {
     }
     return !this.nombre || !this.apellido || !this.email || this.role == "#";
   }
-
-  setPasswordGeneric(){
-    if(this.isPasswordGeneric){
-      this.password = 'Mardom2020';
-    }else{
-      this.password = '';
-    }
-  }
   
   async validateUser() {    
     await this.userService
           .validateUser(this.email)
-          .subscribe((res) => {                             
-            this.enableForm = true;
-            this.codigo = res.data[0].codigo;
-            this.departamento = res.data[0].departamento;
-            this.posicion = res.data[0].cargoNombre;
-            this.oficina = res.data[0].oficina;
-            
-            let nombres = res.data[0].nombre.split(' ');
-            this.apellido = nombres.length > 3 ? nombres[2]+' '+nombres[3] : nombres[1]+' '+nombres[2];
-            this.nombre = nombres.length > 3 ? nombres[0]+' '+nombres[1] : nombres[0];
+          .subscribe((res) => {             
+            if(res.data.length == 1) {              
+              this.codigo = res.data[0].codigo;
+              this.departamento = res.data[0].departamento;
+              this.posicion = res.data[0].cargoNombre;
+              this.oficina = res.data[0].oficina;
+              
+              let nombres = res.data[0].nombre.split(' ');
+              this.apellido = nombres.length > 3 ? nombres[2]+' '+nombres[3] : nombres[1]+' '+nombres[2];
+              this.nombre = nombres.length > 3 ? nombres[0]+' '+nombres[1] : nombres[0];
 
-            if(this.email.indexOf('@') == -1) {
-              let apellidoToEmail = nombres.length > 3 ? nombres[2] : nombres[1];
-              this.email = this.nombre.substr(0,1)+ apellidoToEmail +'@mardom.com';
-              this.email = this.email.toLowerCase();
-            }
+              this.email = res.data[0].email;
+            } else if(res.data.length > 1){
+              this.userRecomendation = res.data;
+            } else this.showMessageNotFound = true;                                    
           });        
   }
 

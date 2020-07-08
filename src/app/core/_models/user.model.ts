@@ -1,8 +1,7 @@
 
 export class user {
     id:             string
-    userName:       string
-    password:       string    
+    userName:       string       
     email:          string
     firstName:      string
     lastName:       string
@@ -12,6 +11,5 @@ export class user {
     position:       string
     role:           string
     phoneNumber:    string 
-    status:         Boolean
-    isPasswordGeneric: Boolean
+    status:         Boolean    
 }
