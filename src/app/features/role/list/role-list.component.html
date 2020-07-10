@@ -17,7 +17,7 @@
 <!-- END: Subheader -->
 <div class="m-content">
     <div>
-        <!--Begin::Section-->
+        <!--Begin:Section-->
         <div class="row">
             <div class="col-xl-12">
                 <div class="m-portlet" m-portlet="true">
@@ -91,7 +91,7 @@
                                             <td>{{item.name}}</td>
                                             <td>{{item.description}}</td>
                                             <td>{{item.status ? 'Activo' : 'Inactivo'}}</td>
-                                            <td>{{item.createdAt ? dateFormat(item.createdAt, "DD/MM/YYYY") : '' }}</td>
+                                            <td>{{item.createdDate ? dateFormat(item.createdDate, "DD/MM/YYYY") : '' }}</td>
                                             <td>{{item.createdBy}}</td>
                                             <td>
                                                 <button ngbTooltip="Editar el registro" (click)=editOrAddRole(item) class="btn btn-outline-primary btn-pill"><i class="fa fa-edit"></i>
@@ -100,7 +100,6 @@
                                                 </button>
                                             </td>
                                         </tr>
-
                                     </tbody>
                                 </table>
 

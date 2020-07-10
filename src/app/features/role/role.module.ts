@@ -27,6 +27,6 @@ import { RoleRoutingModule} from './role.route';
   entryComponents: [RoleListComponent, RoleAddComponent],
   providers: [RoleService],
 })
-export class RoleModule { 
+export class RoleModule{ 
   
 }
