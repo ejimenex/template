@@ -31,7 +31,7 @@
                     <label for="banco">
                         Nombre
                     </label> <span class="text-danger" *ngIf='!nombre'> * </span>
-                    <input type="text" class="form-control  m-input" id="nombre" name="nombre" [(ngModel)]="nombre" />
+                    <input type="text" class="form-control  m-input" [disabled]="editStatus" id="nombre" name="nombre" [(ngModel)]="nombre" />
                 </div>
             </div>
             <div class="col-6">
@@ -39,7 +39,7 @@
                     <label for="banco">
                         Apellido
                     </label> <span class="text-danger" *ngIf='!apellido'> * </span>
-                    <input type="text" class="form-control  m-input" id="apellido" name="apellido" [(ngModel)]="apellido" />
+                    <input type="text" class="form-control  m-input" [disabled]="editStatus" id="apellido" name="apellido" [(ngModel)]="apellido" />
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                     <label for="banco">
                         Codigo
                     </label>
-                    <input type="text" class="form-control  m-input" id="codigo" name="codigo" [(ngModel)]="codigo" />
+                    <input type="text" class="form-control  m-input" [disabled]="editStatus" id="codigo" name="codigo" [(ngModel)]="codigo" />
                 </div>
             </div>
             <div class="col-6">
@@ -57,7 +57,7 @@
                     <label for="banco">
                         Departamento
                     </label>
-                    <input type="text" class="form-control  m-input" id="departamento" name="departamento" [(ngModel)]="departamento" />
+                    <input type="text" class="form-control  m-input" id="departamento" [disabled]="editStatus" name="departamento" [(ngModel)]="departamento" />
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
                     <label for="banco">
                         Posicion
                     </label>
-                    <input type="text" class="form-control  m-input" id="posicion" name="posicion" [(ngModel)]="posicion" />
+                    <input type="text" class="form-control  m-input" [disabled]="editStatus" id="posicion" name="posicion" [(ngModel)]="posicion" />
                 </div>
             </div>
             <div class="col-6">
@@ -75,7 +75,7 @@
                     <label for="banco">
                         Oficina
                     </label>
-                    <input type="text" class="form-control  m-input" id="oficina" name="oficina" [(ngModel)]="oficina" />
+                    <input type="text" class="form-control  m-input" [disabled]="editStatus" id="oficina" name="oficina" [(ngModel)]="oficina" />
                 </div>
             </div>
         </div>         
@@ -103,9 +103,8 @@
                     </div>
                 </div>
             </div>
-        </div>             
-    </form>    
-
+        </div>          
+    </form>
 </div>
 <div class=" modal-footer ">
     <button type="button " class="btn btn-outline-dark " (click)="activeModal.close( ' Close click ') ">Cerrar</button>
