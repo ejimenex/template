@@ -35,6 +35,8 @@ export class UserAddComponent {
   role: string = "#";
   status: Boolean;
 
+  editStatus: Boolean = false;
+
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -170,9 +172,16 @@ export class UserAddComponent {
               this.nombre = nombres.length > 3 ? nombres[0]+' '+nombres[1] : nombres[0];
 
               this.email = res.data[0].email;
+              this.showMessageNotFound = false;
+              this.editStatus = true;
             } else if(res.data.length > 1){
               this.userRecomendation = res.data;
-            } else this.showMessageNotFound = true;                                    
+              this.showMessageNotFound = false;
+              this.editStatus = false;
+            } else {
+              this.editStatus = false;
+              this.showMessageNotFound = true; 
+            }
           });        
   }
 
