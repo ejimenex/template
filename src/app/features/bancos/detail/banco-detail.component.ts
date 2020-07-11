@@ -4,8 +4,10 @@ import { endpoint, config } from "../../../../environments/environment";
 import { ApiService } from "../../../core/_services/api.service";
 import { CancelFileComponent } from "../file-cancel/file-cancel.component";
 import { FilebankService } from "../../../core/_services/filebank.service";
-import { file } from "../../../core/_models/file.model";
+import { file } from '../../../core/_models/file.model';
 import { AlertService } from "../../../core/auth/_services/alert.service";
+import { exportFile } from '../../../core/_models/exportFile';
+import { ExportfileService} from "../../../core/_services/exportfile.service";
 
 declare var swal: any;
 
@@ -17,12 +19,17 @@ export class BancoDetailComponent {
   Ids: string = null;
   depositos: any[];
   motivos: any[];
+  // exportFile : any={}; 
+  bankFile:any={};
+  file : any ={};
   files: file[];
   filter: any = {};
   archivoUrl: string = endpoint.fileServiceUrl; //item.documentoId
   dowloand: string = endpoint.detaild
   @Output()
   notifyParent: EventEmitter<any> = new EventEmitter();
+  
+   exportfileService: ExportfileService;
 
   constructor(
     private modalService: NgbModal,
@@ -37,6 +44,7 @@ export class BancoDetailComponent {
   }
   ngOnInit() {
     this.getAll();
+    this.onLoad();
   }
   cancel(bankFile: number) {
     var modal = this.modalService.open(CancelFileComponent, config.modalConfig);
@@ -54,6 +62,28 @@ export class BancoDetailComponent {
     this.notifyParent.emit();
   }
 
+  onLoad (){
+    let dataUser = JSON.parse(localStorage.getItem('currentUser'));
+    let user = dataUser.userName;  
+    this.bankFile.createdBy = user;
+  }
+  exportFileShared(item){
+    this.exportfileService.exportFile(item)
+    .subscribe(
+      (r) => {
+       this.activeModal.close();
+        swal("Archivo Exportado con Éxito", "", "success");
+        this.notifyParent.emit(r);
+      },
+      (err) => {
+        console.log(err);
+         this.activeModal.close();
+        swal(err.error, "", "info");
+        return;
+      }
+    );
+
+  }
   getAll() {
     this.filterService.fileDetail(this.filter).subscribe(
       (resp) => {
@@ -68,7 +98,7 @@ export class BancoDetailComponent {
             break;
           }
         })
-      
+       console.log(resp);
       },
       (error) => {
         this.alertService.error(error.error);

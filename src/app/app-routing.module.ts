@@ -42,7 +42,7 @@ const routes: Routes = [
             {
                 path: "user",
                 loadChildren: ".\/features\/users\/user.module#UserModule"
-            },  
+            },
             {
                 path: "",
                 redirectTo: "index",

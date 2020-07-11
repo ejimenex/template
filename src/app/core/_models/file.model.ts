@@ -7,8 +7,8 @@ export class file extends BaseModel
 {
    currencyId : number
    bankID : number
-   bankName : string
    companyId : number
+   bankName : string
    company : string
    totalAmount : DecimalPipe
    quantity : number

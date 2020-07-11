@@ -63,6 +63,7 @@ export class BancoListComponent implements OnInit {
   }
 
   viewDetail(item) {
+   
     var modal = this.modalService.open(
       BancoDetailComponent,
       config.modalConfig
@@ -72,7 +73,6 @@ export class BancoListComponent implements OnInit {
         this.getAll(false);
       });
   }
-
   
 
   getAll(resetPage: boolean) {

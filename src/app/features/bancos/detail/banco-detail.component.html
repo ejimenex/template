@@ -7,7 +7,7 @@
 <div class="modal-body">
     <div class="m-section">
         <div class="m-section__content text-center">
-            <table class="table table-striped m-table">
+            <table class="table table-striped table-responsive m-table">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -39,7 +39,7 @@
                                     <a class="dropdown-item m--font-primary" *ngIf="checkClaim('Download')" [attr.href]="dowloand+item.id" target="_blank">
                                         <i class="fa fa-download"></i> Descargar
                                     </a>
-                                    <a class="dropdown-item m--font-primary" *ngIf="checkClaim('Export')" target="_blank">
+                                    <a class="dropdown-item m--font-primary" target="_blank" (click)="exportFileShared(item)">
                                         <i class="fa fa-paper-plane"></i> Exportar
                                     </a>
                                     <a *ngIf="item.quantity != 0 && item.status=='Disponible' && checkClaim('Cancel')" class="dropdown-item m--font-primary" href="#" (click)="cancel(item.id)">
