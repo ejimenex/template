@@ -27,13 +27,12 @@ export class BancoDetailComponent {
   archivoUrl: string = endpoint.fileServiceUrl; //item.documentoId
   dowloand: string = endpoint.detaild
   @Output()
-  notifyParent: EventEmitter<any> = new EventEmitter();
-  
-   exportfileService: ExportfileService;
+  notifyParent: EventEmitter<any> = new EventEmitter();     
 
   constructor(
     private modalService: NgbModal,
     private filterService: FilebankService,
+    private exportfileService: ExportfileService,
     private alertService: AlertService,
     private apiService: ApiService,
     public activeModal: NgbActiveModal
@@ -67,6 +66,7 @@ export class BancoDetailComponent {
     let user = dataUser.userName;  
     this.bankFile.createdBy = user;
   }
+
   exportFileShared(item){
     this.exportfileService.exportFile(item)
     .subscribe(

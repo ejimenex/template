@@ -22,6 +22,7 @@ import { FilebankService } from "../../core/_services/filebank.service";
 import { FileService } from "../../core/_services/file.service";
 import { BankFilesService } from "../../core/_services/bankFiles.service";
 import { CancelationReasonService } from "../../core/_services/cancellationReason.service";
+import { ExportfileService } from "../../core/_services/exportfile.service";
 
 const routes: Routes = [
   {
@@ -68,6 +69,7 @@ const routes: Routes = [
     CompanyService,
     FileService,
     FilebankService,
+    ExportfileService,
     BankFilesService,
     CancelationReasonService,
   ],
