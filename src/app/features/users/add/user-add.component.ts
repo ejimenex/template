@@ -134,7 +134,7 @@ export class UserAddComponent {
             errorToShow = error.error.detail;
           } 
 
-          errorToShow = errorToShow.length > 50 ? 'Ha ocurrido un error inesperado' : errorToShow;
+          errorToShow = errorToShow.length > 100 ? 'Ha ocurrido un error inesperado' : errorToShow;
           this.alertService.error(errorToShow);
         }
       );
@@ -157,32 +157,53 @@ export class UserAddComponent {
     return !this.nombre || !this.apellido || !this.email || this.role == "#";
   }
   
-  async validateUser() {    
+  async validateUser(selected: String) {
+    console.log(selected)
+    if(this.email == ""){
+      this.codigo = "";
+      this.departamento = "";
+      this.posicion = "";
+      this.oficina = "";            
+      this.apellido = "";
+      this.nombre = "";
+    }
     await this.userService
           .validateUser(this.email)
           .subscribe((res) => {             
-            if(res.data.length == 1) {              
-              this.codigo = res.data[0].codigo;
-              this.departamento = res.data[0].departamento;
-              this.posicion = res.data[0].cargoNombre;
-              this.oficina = res.data[0].oficina;
-              
-              let nombres = res.data[0].nombre.split(' ');
-              this.apellido = nombres.length > 3 ? nombres[2]+' '+nombres[3] : nombres[1]+' '+nombres[2];
-              this.nombre = nombres.length > 3 ? nombres[0]+' '+nombres[1] : nombres[0];
-
-              this.email = res.data[0].email;
-              this.showMessageNotFound = false;
-              this.editStatus = true;
-            } else if(res.data.length > 1){
+            if(res.data.length > 0){
               this.userRecomendation = res.data;
               this.showMessageNotFound = false;
               this.editStatus = false;
+              
+              this.setData()
             } else {
               this.editStatus = false;
               this.showMessageNotFound = true; 
             }
-          });        
+          });               
+  }
+
+  validateClick(){
+    console.log('got clcik')
+    this.validateUser('selected')
+  }
+
+  setData(){
+    let res = this.userRecomendation;
+    if(res.length == 1){
+      this.codigo = res[0].codigo;
+      this.departamento = res[0].departamento;
+      this.posicion = res[0].cargoNombre;
+      this.oficina = res[0].oficina;
+      
+      let nombres = res[0].nombre.split(' ');
+      this.apellido = nombres.length > 3 ? nombres[2]+' '+nombres[3] : nombres[1]+' '+nombres[2];
+      this.nombre = nombres.length > 3 ? nombres[0]+' '+nombres[1] : nombres[0];
+  
+      this.email = res[0].email;
+      this.showMessageNotFound = false;
+      this.editStatus = true;
+    }
   }
 
   getAllRole() {
