@@ -156,36 +156,40 @@ export class UserAddComponent {
     }
     return !this.nombre || !this.apellido || !this.email || this.role == "#";
   }
+
+  clearFields(){
+    this.email = "";
+    this.codigo = "";
+    this.departamento = "";
+    this.posicion = "";
+    this.oficina = "";            
+    this.apellido = "";
+    this.nombre = "";
+    this.editStatus = false;
+  }
   
-  async validateUser(selected: String) {
-    console.log(selected)
-    if(this.email == ""){
-      this.codigo = "";
-      this.departamento = "";
-      this.posicion = "";
-      this.oficina = "";            
-      this.apellido = "";
-      this.nombre = "";
+  async validateUser(selected: Boolean) {
+    if(this.email === "") {
+      this.clearFields();
     }
     await this.userService
           .validateUser(this.email)
           .subscribe((res) => {             
             if(res.data.length > 0){
+              this.userRecomendation = [];
               this.userRecomendation = res.data;
               this.showMessageNotFound = false;
-              this.editStatus = false;
+              this.editStatus = false; 
               
-              this.setData()
+              if(selected) {
+                this.setData();
+              }
+              
             } else {
               this.editStatus = false;
               this.showMessageNotFound = true; 
             }
           });               
-  }
-
-  validateClick(){
-    console.log('got clcik')
-    this.validateUser('selected')
   }
 
   setData(){

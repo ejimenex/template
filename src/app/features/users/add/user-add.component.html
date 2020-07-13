@@ -12,8 +12,8 @@
                     <label for="banco">
                         Email o nombre completo
                     </label> <span class="text-danger" *ngIf='!email'> * </span>
-                    <input type="text" class="form-control m-input" list="userRecomendationId" (keyup)="validateUser()" autocomplete="false" id="email" name="email" [(ngModel)]="email" />
-                    <datalist id="userRecomendationId" (click)="validateUser()">
+                    <input type="text" class="form-control m-input" [disabled]="editStatus" list="userRecomendationId" (keyup)="validateUser()" autocomplete="false" id="email" name="email" [(ngModel)]="email" />
+                    <datalist id="userRecomendationId">
                         <option *ngFor="let item of userRecomendation" >{{ item.nombre }}</option>
                     </datalist>
                     <p *ngIf="showMessageNotFound" class="text-danger">No se encontraron resultados para esta busqueda.</p>                    
@@ -21,7 +21,8 @@
             </div>
             <div class="col-4">
                 <div class="mt-4" >
-                    <button type="button" style="margin-top: 5px;" class="btn btn-outline-success " (click)="validateUser('selected')">Validar</button>
+                    <button type="button" style="margin-top: 5px;" class="btn btn-outline-success " (click)="validateUser(true)">Validar</button> &nbsp;
+                    <button type="button" style="margin-top: 5px;" class="btn btn-outline-info " (click)="clearFields()">Limpiar campos</button>
                 </div>
             </div>
         </div>
