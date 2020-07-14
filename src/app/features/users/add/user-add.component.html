@@ -21,7 +21,7 @@
             </div>
             <div class="col-3">
                 <div class="mt-4">                    
-                    <button type="button" style="margin-top: 5px;" class="btn btn-outline-info " (click)="clearFields()">Limpiar campos</button>
+                    <button type="button" style="margin-top: 5px;" [disabled]="isClearBtnAvailable" class="btn btn-outline-info " (click)="clearFields()">Limpiar campos</button>
                 </div>
             </div>
         </div>

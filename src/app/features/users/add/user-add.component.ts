@@ -37,7 +37,8 @@ export class UserAddComponent {
   oficina: string;  
   role: string = "#";
   status: Boolean;
-
+  
+  isClearBtnAvailable: Boolean = false;
   editStatus: Boolean = false;
 
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
@@ -76,6 +77,7 @@ export class UserAddComponent {
         this.role         =  this.user.role;
       }
       this.editStatus = true;
+      this.isClearBtnAvailable = true;
       
     } else {
       this.user = new user();
