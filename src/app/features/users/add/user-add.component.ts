@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter, ViewChild, ElementRef } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { endpoint } from "../../../../environments/environment";
 import { Helpers } from "../../../helpers";
@@ -16,8 +16,11 @@ declare var swal: any;
 @Component({
   selector: "app-user-add",
   templateUrl: "./user-add.component.html",
+  styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent {
+  @ViewChild('validateButton', {read: true, static: true }) validateButton: ElementRef;
+  
   title: string
   showMessageNotFound: boolean;
   userRecomendation: any[];
@@ -166,13 +169,18 @@ export class UserAddComponent {
     this.apellido = "";
     this.nombre = "";
     this.editStatus = false;
+    this.userRecomendation = [];
   }
   
-  async validateUser(selected: Boolean) {
+  async validateUser(selected: string) {
     if(this.email === "") {
       this.clearFields();
     }
-    await this.userService
+    if(selected) {
+      this.email = selected;
+    }
+
+    this.userService
           .validateUser(this.email)
           .subscribe((res) => {             
             if(res.data.length > 0){
