@@ -13,7 +13,7 @@
                         Email o nombre completo
                     </label> <span class="text-danger" *ngIf='!email'> * </span>
                     <input type="text" class="form-control m-input" [disabled]="editStatus" (keyup)="validateUser()" autocomplete="off" id="email" name="email" [(ngModel)]="email" />
-                    <ul class="list-data" *ngIf="userRecomendation.length > 0 && !editStatus">
+                    <ul class="list-data" *ngIf="userRecomendation && userRecomendation.length > 0 && !editStatus">
                         <li *ngFor="let item of userRecomendation" (click)="validateUser(item.nombre)">{{ item.nombre }}</li>
                     </ul>                  
                     <p *ngIf="showMessageNotFound" class="text-danger">No se encontraron resultados para esta busqueda.</p>                    
