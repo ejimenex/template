@@ -75,10 +75,11 @@ export class UserAddComponent {
       if(this.user.role != 'Sin asignar'){
         this.role         =  this.user.role;
       }
+      this.editStatus = true;
       
     } else {
       this.user = new user();
-      this.userRecomendation = new Array();
+      this.userRecomendation = new Array();      
     }
     
   }
