@@ -17,17 +17,6 @@ export class ExportfileService extends BaseService<exportFile, number> {
     super(_httpClient, endpoint.exportFile)
   }
 
-  // exportFile(item: any, userexport: any){
-  //   const data = {
-  //     BankId: item.bankId,
-   //     currencyId: item.currencyId,
-  //     companyId: item.companyId,
-  //     id: item.id,
-  //     userexport: userexport
-  //   };
-  //   return this._httpClient.post<any>(endpoint.exportFile +`/${item.bankId}/${item.currencyId}/${item.companyId}/${item.id}/${userexport}`, data)
-  // }
-
   exportFile(item: any, userexport: any){
     return this._httpClient.get<any>(endpoint.exportFile +`${item.bankId}/${item.currencyId}/${item.companyId}/${item.id}/${userexport}`);
   }
