@@ -1,3 +1,4 @@
+
 import { Component, EventEmitter, Output } from "@angular/core";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { endpoint, config } from "../../../../environments/environment";
@@ -8,6 +9,8 @@ import { file } from '../../../core/_models/file.model';
 import { AlertService } from "../../../core/auth/_services/alert.service";
 import { exportFile } from '../../../core/_models/exportFile';
 import { ExportfileService} from "../../../core/_services/exportfile.service";
+import * as fileSaver from 'file-saver';
+import { HttpResponse } from '@angular/common/http';
 
 declare var swal: any;
 
@@ -26,6 +29,8 @@ export class BancoDetailComponent {
   filter: any = {};
   archivoUrl: string = endpoint.fileServiceUrl; //item.documentoId
   dowloand: string = endpoint.detaild
+  export: string = endpoint.exportFile
+  userexport: any;
   @Output()
   notifyParent: EventEmitter<any> = new EventEmitter();     
 
@@ -64,26 +69,10 @@ export class BancoDetailComponent {
   onLoad (){
     let dataUser = JSON.parse(localStorage.getItem('currentUser'));
     let user = dataUser.userName;  
-    this.bankFile.createdBy = user;
+    this.userexport = user;
   }
 
-  exportFileShared(item){
-    this.exportfileService.exportFile(item)
-    .subscribe(
-      (r) => {
-       this.activeModal.close();
-        swal("Archivo Exportado con Éxito", "", "success");
-        this.notifyParent.emit(r);
-      },
-      (err) => {
-        console.log(err);
-         this.activeModal.close();
-        swal(err.error, "", "info");
-        return;
-      }
-    );
-
-  }
+  
   getAll() {
     this.filterService.fileDetail(this.filter).subscribe(
       (resp) => {
@@ -94,11 +83,12 @@ export class BancoDetailComponent {
           {
             case 'D' : res.status='Disponible';
             break;
-            case 'E' : res.status='Enviada';
+            case 'E' : res.status='Exportado';
             break;
           }
+          console.log(res);
         })
-       console.log(resp);
+     
       },
       (error) => {
         this.alertService.error(error.error);

@@ -51,11 +51,10 @@ export class DetailBankFileComponent implements OnInit {
               res.class = "badge badge-success";
               break;
             case "E":
-              res.statusName = "Enviada";
+              res.statusName = "Exportada";
               res.class = "badge badge-primary";
               break;
           }
-
           return res;
         });
         this.dataPage = response;

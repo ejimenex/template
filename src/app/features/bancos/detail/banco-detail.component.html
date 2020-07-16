@@ -39,7 +39,7 @@
                                     <a class="dropdown-item m--font-primary" *ngIf="checkClaim('Download')" [attr.href]="dowloand+item.id" target="_blank">
                                         <i class="fa fa-download"></i> Descargar
                                     </a>
-                                    <a class="dropdown-item m--font-primary" target="_blank" (click)="exportFileShared(item)">
+                                    <a class="dropdown-item m--font-primary" *ngIf="checkClaim('ExportBankFile')" [attr.href]="export+item.bankId+'/'+item.currencyId+'/'+item.companyId+'/'+item.id+'/'+userexport"    target="_blank">
                                         <i class="fa fa-paper-plane"></i> Exportar
                                     </a>
                                     <a *ngIf="item.quantity != 0 && item.status=='Disponible' && checkClaim('Cancel')" class="dropdown-item m--font-primary" href="#" (click)="cancel(item.id)">

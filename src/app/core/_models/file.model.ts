@@ -6,7 +6,7 @@ import { Currency } from './currency';
 export class file extends BaseModel
 {
    currencyId : number
-   bankID : number
+   bankId : number
    companyId : number
    bankName : string
    company : string
