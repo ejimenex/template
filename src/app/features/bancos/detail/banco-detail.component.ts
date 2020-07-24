@@ -86,7 +86,6 @@ export class BancoDetailComponent {
             case 'E' : res.status='Exportado';
             break;
           }
-          console.log(res);
         })
      
       },

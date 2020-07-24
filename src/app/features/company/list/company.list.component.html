@@ -82,10 +82,10 @@
                                             <td>{{item.name}}</td>
                                             <td>{{item.code}}</td>
                                             <td>{{item.documentNumber }}</td>
-                                            <td>
-                                                <button ngbTooltip="Eliminar el registro" style="margin-right: 3px;" (click)=confirmDelete(item.id) class="btn btn-outline-danger btn-pill"><i class="fa fa-trash"></i>
-                                                </button>
+                                            <td> 
                                                 <button ngbTooltip="Editar el registro" (click)=editOrAddCompany(item.id) class="btn btn-outline-primary btn-pill"><i class="fa fa-edit"></i>
+                                                </button>
+                                                <button ngbTooltip="Eliminar el registro" style="margin-right: 3px;" (click)=confirmDelete(item.id) class="btn btn-outline-danger btn-pill"><i class="fa fa-trash"></i>
                                                 </button>
                                             </td>
                                         </tr>
