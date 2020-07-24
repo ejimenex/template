@@ -18,8 +18,7 @@ export class CompanyAddComponent {
   company: company = new company();
   id: any;
   title = "";
-  //rncMask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-
+  
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -29,7 +28,6 @@ export class CompanyAddComponent {
     private alertService: AlertService
   ) {
    
- 
   }
   ngOnInit(){
     this.title = this.id
@@ -71,27 +69,10 @@ export class CompanyAddComponent {
 
    if (!pattern.test(event.target.value)) {
       event.target.value = event.target.value.replace(/[^0-9]/g, "");
-      
     }
+
+
   }
-
-// validateRNC(rnc: any){
-//   let sum: number;
-//   let divid: number;
-//   let i: any;
-
-//   if(rnc != 9){
-
-//     return false;
-
-//   } 
-//   else
-//   {
-    
-//   }
-
-// }
-
 
   edit() {
     this.alertService.question(() => {
