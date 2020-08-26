@@ -46,7 +46,7 @@ export class BancoDetailComponent {
       this.motivos = response.data;
     });
   }
-  ngOnInit() {
+  ngOnInit() {    
     this.getAll();
     this.onLoad();
   }
@@ -94,6 +94,20 @@ export class BancoDetailComponent {
       }
     );
   }
+
+  exportFile(item: any){
+    this.exportfileService.exportFile(item, this.userexport).subscribe(
+      () => {
+        this.notifyParent.emit("success");
+        this.modalService.dismissAll();        
+      },
+      () => {
+        this.notifyParent.emit("error");
+        this.modalService.dismissAll();        
+      }
+    );
+  }
+
   checkClaim(option: string) {
     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
     switch(option) {

@@ -43,7 +43,7 @@ export class BancoListComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.getAll(false);
     this.onLoad();
   
@@ -70,8 +70,11 @@ export class BancoListComponent implements OnInit {
     );
     modal.componentInstance.filter = item;
     modal.componentInstance.notifyParent.subscribe((result) => {
-        this.getAll(false);
-      });
+      if(result == 'success')
+        this.alertService.success("Archivo exportado correctamente").then(() => this.getAll(false));
+      else
+      this.alertService.error("Hubo un error al exportar el archivo");        
+    });
   }
   
 
