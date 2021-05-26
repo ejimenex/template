@@ -12,8 +12,8 @@ export const environment: any = {
 export const config: any = {
   apiUrl: "http://10.228.30.87:8001/api/", //"http://localhost:5000/api/",//"http://10.228.30.87:8001/api/", //"http://192.168.50.5:6001/api/",//  "http://192.168.50.5:6002/api/",
   mantenimientoUrl: "http://10.228.30.106:5600/api/",
-  apiArchivo:'http://10.228.30.87:6500/api/',//'http://localhost:5000/api/',//
-  authentication:'http://10.228.30.87:6500/api/',//'http://localhost:5000/api/',// 
+  apiArchivo:'http://10.228.30.87:6500/api/',//'http://10.228.20.55:300',//,//'http://10.228.30.87:6500/api/''http://10.228.30.87:6500/api/',//
+  authentication:'http://10.228.30.87:8001/api/',//'http://10.228.30.87:6500/api/',//'http://10.228.20.55:300',//,'http://10.228.30.87:6500/api/',//
   serverUrl: "http://10.228.30.87:8025/",
   reportUrl: "http://mardom-qa-srv01/",
   reportServerUrl: "http://mardom-sql-srv01/ReportServer",
