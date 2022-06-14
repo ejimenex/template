@@ -63,7 +63,7 @@ export class BancoDetailComponent {
   }
   close() {
     this.activeModal.close();
-    this.notifyParent.emit();
+    //this.notifyParent.emit();
   }
 
   onLoad (){
@@ -98,12 +98,14 @@ export class BancoDetailComponent {
   exportFile(item: any){
     this.exportfileService.exportFile(item, this.userexport).subscribe(
       () => {
+        this.activeModal.close(); 
         this.notifyParent.emit("success");
-        this.modalService.dismissAll();        
+          
       },
       () => {
+        this.activeModal.close();  
         this.notifyParent.emit("error");
-        this.modalService.dismissAll();        
+
       }
     );
   }
