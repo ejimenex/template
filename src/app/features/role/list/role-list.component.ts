@@ -5,10 +5,7 @@ import * as moment from "moment";
 import { endpoint, config } from "../../../../environments/environment";
 import { Helpers } from "../../../helpers";
 import { RoleAddComponent } from "../add/role-add.component";
-import { CompanyService } from "../../../core/_services/company.service";
-import { company } from "../../../core/_models/company.model";
 import { AlertService } from "../../../core/_services/alert.service";
-import { role } from "../../../core/_models/role.model";
 import { RoleService } from "../../../core/_services/role.service";
 import * as dateFormater from 'moment';
 
@@ -19,7 +16,7 @@ import * as dateFormater from 'moment';
 })
 export class RoleListComponent implements OnInit {
   @Input()
-  roles: role[];
+  roles=[];
 
   constructor(
     private modalService: NgbModal,

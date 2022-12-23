@@ -3,12 +3,10 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { endpoint } from "../../../../environments/environment";
 import { Helpers } from "../../../helpers";
 import { HttpClient } from "@angular/common/http";
-import { role } from "../../../core/_models/role.model";
 import { AlertService } from "../../../core/_services/alert.service";
 import { ThrowStmt } from "@angular/compiler";
 import { RoleService } from '../../../core/_services/role.service';
 import { UserService } from "../../../core/_services/user.service";
-import { user } from "../../../core/_models/user.model";
 
 
 declare var swal: any;
@@ -24,8 +22,8 @@ export class UserAddComponent {
   title: string
   showMessageNotFound: boolean;
   userRecomendation: any[];
-  user: user;
-  roles: role[]
+  user: any={};
+  roles=[]
 
   email: string
   nombre: string
@@ -80,7 +78,7 @@ export class UserAddComponent {
       this.isClearBtnAvailable = true;
       
     } else {
-      this.user = new user();
+      //this.user = null;
       this.userRecomendation = new Array();      
     }
     

@@ -5,8 +5,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgxSpinnerModule } from "ngx-spinner";
-import {NgxMaskModule, IConfig} from 'ngx-mask';
 
 
 import { JwtModule } from '@auth0/angular-jwt';
@@ -36,7 +34,6 @@ export function token() {
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        NgxSpinnerModule,
         ThemeRoutingModule,
         AuthModule,
         JwtModule.forRoot({

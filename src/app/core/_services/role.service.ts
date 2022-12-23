@@ -3,7 +3,6 @@ import { BaseService } from "./base.service";
 import { HttpClient } from "@angular/common/http";
 import { config,endpoint } from "../../../environments/environment";
 import { role } from '../_models/role.model';
-import { permission } from "../_models/permission.model";
 
 @Injectable()
 export class RoleService extends BaseService<role, number> {
@@ -20,11 +19,11 @@ export class RoleService extends BaseService<role, number> {
     return this._httpClient.get<role>(endpoint.roleUrl+`/${roleId}`, {headers: this.jwt()});
   }
 
-  createRole(role: role, permissions: permission[]){    
+  createRole(role: role, permissions: any){    
     return this._httpClient.post<any>(endpoint.roleUrl, { role, permissions } , {headers: this.jwt()});
   }
 
-  updateRole(role: role, permissions: permission[]){     
+  updateRole(role: role, permissions: any){     
     const data = {
       id: role.id,
       name: role.name,
@@ -38,10 +37,4 @@ export class RoleService extends BaseService<role, number> {
   deleteRole(roleId: string){
     return this._httpClient.delete<any>(endpoint.roleUrl+`/${roleId}`, {headers: this.jwt()});
   }
-
-  getPermission(roleId: string) {
-    const url = roleId == '' ? endpoint.permissionUrl+'/0' : endpoint.permissionUrl+`/${roleId}`;
-    return this._httpClient.get<permission[]>(url, {headers: this.jwt()});
-  }
-
 }

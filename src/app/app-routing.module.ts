@@ -19,22 +19,8 @@ const routes: Routes = [
                 path: "index",
                 loadChildren: ".\/core\/theme\/pages\/default\/blank\/blank.module#BlankModule",
             },
-            {
-                path: "depositos",
-                loadChildren: ".\/features\/depositos\/deposito.module#DepositoModule",
-            },
-            {
-                path: "archivosBanco",
-                loadChildren: ".\/features\/bancos\/banco.module#BancoModule",
-            },
-            {
-                path: "company",
-                loadChildren: ".\/features\/company\/company.module#CompanyModule",                
-            },
-            {
-                path:"export",
-                loadChildren: ".\/features\/exportBanco\/export.module#ExportModule"
-            },
+          
+            
             {
                 path: "role",
                 loadChildren: ".\/features\/role\/role.module#RoleModule"

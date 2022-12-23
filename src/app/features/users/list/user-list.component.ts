@@ -5,7 +5,6 @@ import { AlertService } from "../../../core/_services/alert.service";
 import * as dateFormater from 'moment';
 import { UserAddComponent } from "../add/user-add.component";
 import { UserService } from "../../../core/_services/user.service";
-import { user } from "../../../core/_models/user.model";
 
 
 @Component({
@@ -14,7 +13,7 @@ import { user } from "../../../core/_models/user.model";
 })
 export class UserListComponent implements OnInit {
   @Input()
-  users: user[];
+  users=[];
 
   constructor(
     private modalService: NgbModal,

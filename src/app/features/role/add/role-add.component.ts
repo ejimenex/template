@@ -3,11 +3,9 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { endpoint } from "../../../../environments/environment";
 import { Helpers } from "../../../helpers";
 import { HttpClient } from "@angular/common/http";
-import { role } from "../../../core/_models/role.model";
 import { AlertService } from "../../../core/_services/alert.service";
 import { ThrowStmt } from "@angular/compiler";
 import { RoleService } from '../../../core/_services/role.service';
-import { permission } from "../../../core/_models/permission.model";
 
 
 declare var swal: any;
@@ -17,8 +15,8 @@ declare var swal: any;
   templateUrl: "./role-add.component.html",
 })
 export class RoleAddComponent {
-  role: role;
-  permission: permission[];
+  role: any={};
+  permission=[];
   roleId: string
   roleName: string
   roleDescription: string
@@ -51,10 +49,9 @@ export class RoleAddComponent {
       this.roleDescription = this.item.description;
       this.roleStatus = this.item.status;
     } else {
-      this.role = new role();
+      this.role = undefined;
     }
 
-    this.getPermission();
 }
   save() {
     if(this.validate()) return this.alertService.error('Por favor completar todos los campos')    
@@ -102,11 +99,5 @@ export class RoleAddComponent {
   validate(){
     return (!this.roleName || !this.roleDescription);
   }
-  getPermission() {    
-    this.roleService
-          .getPermission(this.role.id ? this.role.id.toString() : '')
-          .subscribe((res) => {          
-            this.permission = res;            
-          });    
-  }
+ 
 }

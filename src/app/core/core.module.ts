@@ -5,7 +5,6 @@ import { ThemeRoutingModule } from './theme/theme-routing.module';
 import { LayoutModule } from './theme/layouts/layout.module';
 import { ScriptLoaderService } from './_services/script-loader.service';
 import { AlertService } from './_services/alert.service';
-import { FilterService } from './_services/filter.service';
 import { ApiService } from './_services/api.service';
 import { AuthRoutingModule } from './auth/auth-routing.routing';
 import { AuthGuard } from './auth/_guards/auth.guard';
@@ -16,7 +15,7 @@ import { AuthGuard } from './auth/_guards/auth.guard';
   ],
   declarations: [ThemeComponent],
   exports: [LayoutModule, AuthModule, ThemeRoutingModule, ThemeComponent, AuthRoutingModule],
-  providers: [ScriptLoaderService, AlertService, FilterService,
+  providers: [ScriptLoaderService, AlertService,
     ApiService, AuthGuard]
 })
 export class CoreModule { }
