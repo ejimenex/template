@@ -12,20 +12,19 @@ import { UserService} from '../../core/_services/user.service';
 import { UserRoutingModule} from './user.route';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NgbModule,
-    FormsModule,
-    LayoutModule,
-    CommonModule,
-    UserRoutingModule,
-    SharedModule,
-    ReactiveFormsModule
-  ],
-  exports: [RouterModule], 
-  declarations: [UserListComponent, UserAddComponent],
-  entryComponents: [UserListComponent, UserAddComponent],
-  providers: [UserService],
+    imports: [
+        CommonModule,
+        NgbModule,
+        FormsModule,
+        LayoutModule,
+        CommonModule,
+        UserRoutingModule,
+        SharedModule,
+        ReactiveFormsModule
+    ],
+    exports: [RouterModule],
+    declarations: [UserListComponent, UserAddComponent],
+    providers: [UserService]
 })
 export class UserModule { 
   

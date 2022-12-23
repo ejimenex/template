@@ -31,8 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
         AuthenticationService,
         UserService,
         TokenService
-    ],
-    entryComponents: [AlertComponent],
+    ]
 })
 
 export class AuthModule {

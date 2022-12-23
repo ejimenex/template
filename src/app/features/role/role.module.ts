@@ -12,20 +12,19 @@ import { RoleService} from '../../core/_services/role.service';
 import { RoleRoutingModule} from './role.route';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NgbModule,
-    FormsModule,
-    LayoutModule,
-    CommonModule,
-    RoleRoutingModule,
-    SharedModule,
-    ReactiveFormsModule
-  ],
-  exports: [RouterModule], 
-  declarations: [RoleListComponent, RoleAddComponent],
-  entryComponents: [RoleListComponent, RoleAddComponent],
-  providers: [RoleService],
+    imports: [
+        CommonModule,
+        NgbModule,
+        FormsModule,
+        LayoutModule,
+        CommonModule,
+        RoleRoutingModule,
+        SharedModule,
+        ReactiveFormsModule
+    ],
+    exports: [RouterModule],
+    declarations: [RoleListComponent, RoleAddComponent],
+    providers: [RoleService]
 })
 export class RoleModule{ 
   
