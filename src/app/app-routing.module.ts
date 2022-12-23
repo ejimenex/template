@@ -7,7 +7,7 @@ import { AuthGuard } from './core/auth/_guards/auth.guard';
 
 
 const routes: Routes = [
-    { path: "login", loadChildren: "./core/auth/auth.module#AuthModule" },
+    { path: "login", loadChildren: () => import('./core/auth/auth.module').then(m => m.AuthModule) },
     { path: "logout", component: LogoutComponent },
     { path: "", redirectTo: "index", pathMatch: "full" },
     {
@@ -17,17 +17,17 @@ const routes: Routes = [
         children: [
             {
                 path: "index",
-                loadChildren: ".\/core\/theme\/pages\/default\/blank\/blank.module#BlankModule",
+                loadChildren: () => import('./core/theme/pages/default/blank/blank.module').then(m => m.BlankModule),
             },
           
             
             {
                 path: "role",
-                loadChildren: ".\/features\/role\/role.module#RoleModule"
+                loadChildren: () => import('./features/role/role.module').then(m => m.RoleModule)
             },
             {
                 path: "user",
-                loadChildren: ".\/features\/users\/user.module#UserModule"
+                loadChildren: () => import('./features/users/user.module').then(m => m.UserModule)
             },
             {
                 path: "",
@@ -38,7 +38,7 @@ const routes: Routes = [
     },
     {
         path: "**",
-        loadChildren: ".\/core\/theme\/pages\/default\/not-found\/not-found.module#NotFoundModule",
+        loadChildren: () => import('./core/theme/pages/default/not-found/not-found.module').then(m => m.NotFoundModule),
         pathMatch: "full",
     }
 ];
