@@ -59,6 +59,7 @@ export class AuthComponent implements OnInit {
 
     signin() {
         this.loading = true;
+       return this._router.navigate([this.returnUrl]);
         this._authService.login(this.model.email, this.model.password).subscribe(
             data => {                
                 this._router.navigate([this.returnUrl]);

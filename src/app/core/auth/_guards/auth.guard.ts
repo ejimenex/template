@@ -13,30 +13,29 @@ export class AuthGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
+return true;
+        // if (!this._userService.verify()) {
+        //     this._router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+        //     this.authenticationService.logout();
+        //     return false;
+        // }
 
-
-        if (!this._userService.verify()) {
-            this._router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-            this.authenticationService.logout();
-            return false;
-        }
-
-        return this._userService.getOne().pipe(map(
-            data => {
-                if (data !== null) {
-                    // logged in so return true
-                    return true;
-                }
-                // error when verify so redirect to login page with the return url
-                this._router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-                this.authenticationService.logout();
-                return false;
-            },
-            error => {
-                // error when verify so redirect to login page with the return url
-                this._router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-                this.authenticationService.logout();
-                return false;
-            }));
-    }
+        // return this._userService.getOne().pipe(map(
+        //     data => {
+        //         if (data !== null) {
+        //             // logged in so return true
+        //             return true;
+        //         }
+        //         // error when verify so redirect to login page with the return url
+        //         this._router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+        //         this.authenticationService.logout();
+        //         return false;
+        //     },
+        //     error => {
+        //         // error when verify so redirect to login page with the return url
+        //         this._router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+        //         this.authenticationService.logout();
+        //         return false;
+        //     }));
+ }
 }

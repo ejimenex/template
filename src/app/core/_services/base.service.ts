@@ -3,7 +3,6 @@ import { IService } from './Interface/IService';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { of, Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { isNullOrUndefined } from 'util';
 
 export class BaseService<TEntity, TKey> implements IService<TEntity, TKey> {
 
@@ -69,7 +68,7 @@ export class BaseService<TEntity, TKey> implements IService<TEntity, TKey> {
   requestResolver(request: any) : Observable<TEntity[]> {
     let entity = from<TEntity[][]>(request.pipe(map (d=> d["data"])))
 
-    if(!isNullOrUndefined(entity)) {
+    if(!(entity)) {
       return entity;
     }
 

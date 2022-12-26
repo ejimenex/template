@@ -28,6 +28,7 @@ export class AsideNavComponent implements OnInit, AfterViewInit {
     }
 
     checkClaim(option: string) {
+        return true;
         let currentUser = JSON.parse(localStorage.getItem("currentUser"));
         switch(option) {
             case 'Cancel':
